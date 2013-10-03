@@ -69,6 +69,11 @@ void cutflowHists::Init()
   Book( TH1F( "deltaPhiDaughters", "", 20, 0, 3.5));
   Book( TH1F( "deltaPhiMothers", "", 20, 0, 3.5));
   Book( TH1F( "NPrimaryVertices", "n prim. vertices", 20, 0, 40));
+  Book( TH1F( "topCandidatePt", "#p_{T} of top candidate (GeV)", 50, 0, 2000));
+ Book( TH1F( "HiggsCandidatePt", "#p_{T} of Higgs candidate (GeV)", 50, 0, 2000));
+ Book( TH1F( "topCandidateMass", "mass of top candidate (GeV)", 50, 0, 300));
+ Book( TH1F( "HiggsCandidateMass", "mass of Higgs candidate (GeV)", 50, 0, 300));
+
 }
 
 
@@ -166,7 +171,7 @@ void cutflowHists::Fill()
     if(bcc->topjets->at(i).pt()<ptcut) continue;
     TopJet myJet = bcc->topjets->at(i);
     HTTopJets += myJet.pt();
-    if (HepTopTag(myJet)){
+    if (HepTopTagWithMatch(myJet)){
       nTopTags+= 1;
       if( nTopTags == 1 && indexTopJet1 == -99) indexTopJet1 = i;
       if( nTopTags == 2 && indexTopJet2 == -99) indexTopJet2 = i;
@@ -180,19 +185,31 @@ void cutflowHists::Fill()
       if (nSubTagsM > 0) countTopTagPlusSubBTagM++;  
       if (nSubTagsT > 0) countTopTagPlusSubBTagT++;
       if (countTopTagPlusSubBTagM == 1 && indexFirstTopJet == -99)indexFirstTopJet = i;
+      if (i == indexFirstTopJet){
+	Hist("topCandidatePt") -> Fill(myJet.pt(), weight);
+	//Hist("topCandidateMass") -> Fill(myJet.m(), weight);
+      }
     }
   }
+  
   for(int i =0; i<bcc->topjets->size(); i++ ){
     if(bcc->topjets->at(i).pt()<ptcut) continue;
     TopJet myJet = bcc->topjets->at(i);
     if(i != indexFirstTopJet){
       if (HiggsTag(myJet, e_CSVL, e_CSVL)) countHiggsTagLL++;  
       if (HiggsTag(myJet, e_CSVL, e_CSVM)) countHiggsTagLM++; 
-      if (HiggsTag(myJet, e_CSVM, e_CSVM)) countHiggsTagMM++; 
+      if (HiggsTag(myJet, e_CSVM, e_CSVM)) {
+	countHiggsTagMM++;
+	if (countHiggsTagMM == 1){
+	  Hist("HiggsCandidatePt") -> Fill(myJet.pt(), weight);
+	  // Hist("HiggsCandidateMass") -> Fill(myJet.m(), weight);
+	} 
+      }
       if (HiggsTag(myJet, e_CSVM, e_CSVT)) countHiggsTagMT++; 
       if (HiggsTag(myJet, e_CSVT, e_CSVT)) countHiggsTagTT++;
       if (countHiggsTagLL == 1 && indexHiggs1 == -99) indexHiggs1 = i;
       if (countHiggsTagLL == 2 && indexHiggs2 == -99) indexHiggs2 = i;
+      
     }
   }
 

@@ -1,16 +1,16 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <!DOCTYPE JobConfiguration PUBLIC "" "JobConfig.dtd"[
 <!--<!ENTITY TTbar SYSTEM "ttbsm_53x_v2_cfg_withdouble_nomassdrop_ntuplewriter_cfg_withdouble_Summer12_DR53X_TTJets_MassiveBinDECAY_TuneZ2star_8TeV-madgraph-tauola_AODSIM_PU_S10_START53_V7A-v1.xml">-->
-<!ENTITY TTbar SYSTEM "ttbsm_53x_v2_cfg_mc_fly_Summer12_DR53X_TTJets_MassiveBinDECAY_TuneZ2star_8TeV-madgraph-tauola_AODSIM_PU_S10_START53_V7A-v1.xml">
 
-<!ENTITY QCD SYSTEM "ttbsm_53x_v2_cfg_withdouble_nomassdrop_ntuplewriter_cfg_withdouble_Summer12_DR53X_QCD_Pt-15to3000_TuneZ2star_Flat_8TeV_pythia6_AODSIM_PU_S10_START53_V7A-v1.xml">
-<!ENTITY QCD250to500 SYSTEM "ttbsm_53x_v2_cfg_mc_fly_Summer12_DR53X_QCD_HT-250To500_TuneZ2star_8TeV-madgraph-pythia6_AODSIM_PU_S10_START53_V7A-v1.xml">
-<!ENTITY QCD500to1000 SYSTEM "ttbsm_53x_v2_cfg_mc_fly_Summer12_DR53X_QCD_HT-500To1000_TuneZ2star_8TeV-madgraph-pythia6_AODSIM_PU_S10_START53_V7A-v1.xml">
-<!ENTITY QCD500to1000bis SYSTEM "ttbsm_53x_v2_cfg_mc_fly_Summer12_DR53X_QCD_HT-500To1000_TuneZ2star_8TeV-madgraph-pythia6_AODSIM_PU_S10_START53_V7A-v1_bis.xml">
-<!ENTITY QCD1000 SYSTEM "ttbsm_53x_v2_cfg_mc_fly_Summer12_DR53X_QCD_HT-1000ToInf_TuneZ2star_8TeV-madgraph-pythia6_AODSIM_PU_S10_START53_V7A-v1.xml">
-<!ENTITY QCD1000A SYSTEM "ttbsm_53x_v2_cfg_mc_fly_Summer12_DR53X_QCD_HT-1000ToInf_TuneZ2star_8TeV-madgraph-pythia6_AODSIM_PU_S10_START53_V7A-v1_split1.xml">
-<!ENTITY QCD1000B SYSTEM "ttbsm_53x_v2_cfg_mc_fly_Summer12_DR53X_QCD_HT-1000ToInf_TuneZ2star_8TeV-madgraph-pythia6_AODSIM_PU_S10_START53_V7A-v1_split2.xml">
-<!ENTITY QCD1000C SYSTEM "ttbsm_53x_v2_cfg_mc_fly_Summer12_DR53X_QCD_HT-1000ToInf_TuneZ2star_8TeV-madgraph-pythia6_AODSIM_PU_S10_START53_V7A-v1_split3.xml">
+
+<!ENTITY TTbarSemiLep SYSTEM "TTJets_SemiLeptMGDecays_8TeV-madgraph.xml">
+<!ENTITY TTbarHadronic SYSTEM "TTJets_HadronicMGDecays_8TeV-madgraph.xml">
+<!ENTITY QCD500to1000 SYSTEM "QCD_HT-500To1000_TuneZ2star_8TeV-madgraph-pythia6.xml">
+<!ENTITY QCD1000 SYSTEM "QCD_HT-1000ToInf_TuneZ2star_8TeV-madgraph-pythia6.xml">
+
+
+<!--
+
 <!ENTITY TPTHTH1000Inc SYSTEM "ttbsm_53x_v2_cfg_mc_fly_Summer12_DR53X_TprimeTprimeToTHTHinc_M-1000_TuneZ2star_8TeV-madgraph_AODSIM_PU_S10_START53_V7C-v1.xml">
 <!ENTITY TPTHTH900Inc SYSTEM "ttbsm_53x_v2_cfg_mc_fly_Summer12_DR53X_TprimeTprimeToTHTHinc_M-900_TuneZ2star_8TeV-madgraph_AODSIM_PU_S10_START53_V7C-v1.xml">
 <!ENTITY TPTHTH800Inc SYSTEM "ttbsm_53x_v2_cfg_mc_fly_Summer12_DR53X_TprimeTprimeToTHTHinc_M-800_TuneZ2star_8TeV-madgraph_AODSIM_PU_S10_START53_V7C-v1.xml">
@@ -71,24 +71,30 @@
 
 <!ENTITY DATAA-13Jul2012 SYSTEM "ttbsm_53x_Jet_Run2012A-13Jul2012-v1_AOD.xml"> 
 <!ENTITY DATAA-recover SYSTEM "ttbsm_53x_Jet_Run2012A-recover-06Aug2012-v1_AOD.xml">
- 
+ -->
 
 ]>
 
 <!-- <JobConfiguration JobName="TPrimePreselectionCycleJob" OutputLevel="VERBOSE"> -->
-<JobConfiguration JobName="TPrimePreselectionCycleJob" OutputLevel="DEBUG">
+<JobConfiguration JobName="cutflowCycleJob" OutputLevel="DEBUG">
 
-	<Library Name="libfastjet"/>
-	<Library Name="libfastjettools"/>
-	<Library Name="libSFramePlugIns"/>
-	<Library Name="libSFrameTools"/>
-	<Library Name="libAnalysis"/>
+       <Library Name="libfastjet"/>
+        <Library Name="libfastjettools"/>
+        <Library Name="libSFramePlugIns"/>
+        <Library Name="libSFrameTools"/>
+        <Library Name="libAnalysis"/>
+        <Library Name="libNtuple"/>
+        <Library Name="libJetMETObjects"/>
+        <Library Name="libhoeingAnalysis"/>
 
-	<Package Name="SFrameCore.par" />
-	<Package Name="SFramePlugIns.par" />
-	<Package Name="Analysis.par" />
+        <Package Name="hoeingAnalysis.par" />
 
-	<Cycle Name="TPrimePreselectionCycle" RunMode="PROOF" ProofServer="lite://"  ProofWorkDir="" OutputDirectory="/scratch/hh/dust/naf/cms/user/hoeing/newSFrame/CMSSW_5_2_5/src/SFrame/Output/TPrimePreselection/" PostFix="" TargetLumi="19483.0">
+
+
+
+
+
+	<Cycle Name="TPrimePreselectionCycle" RunMode="PROOF" ProofServer="lite://"  ProofWorkDir="" OutputDirectory="../../Output/TPrimePreselection/" PostFix="" TargetLumi="19483.0">
 	
 	
 	
@@ -174,42 +180,40 @@
 
 
 
- <InputData Lumi="90.968974638" NEventsMax="-1" Type="MC" Version="QCD250to500" Cacheable="True"> 
-&QCD250to500;
-<InputTree Name="AnalysisTree" />
-<OutputTree Name="AnalysisTree" />
-      </InputData>
+-->
 
 
-
-
-
-<InputData Lumi="3304.260859245" NEventsMax="-1" Type="MC" Version="QCD500to1000" Cacheable="True"> 
+<InputData Lumi="3601.48670781" NEventsMax="-1" Type="MC" Version="QCD500to1000" Cacheable="True"> 
 &QCD500to1000;
-&QCD500to1000bis;
 <InputTree Name="AnalysisTree" />
 <OutputTree Name="AnalysisTree" />
                 </InputData>
 
 
--->
 
-<InputData Lumi="60929.960784314" NEventsMax="-1" Type="MC" Version="QCD1000" Cacheable="True"> 
+
+<InputData Lumi="66508.4166667" NEventsMax="-1" Type="MC" Version="QCD1000" Cacheable="True"> 
 &QCD1000;
 <InputTree Name="AnalysisTree" />
 <OutputTree Name="AnalysisTree" />
                 </InputData>
 
 
-<!--
 
- <InputData Lumi="26457.2179" NEventsMax="-1" Type="MC" Version="TTbar" Cacheable="True">
-&TTbar;
+
+ <InputData Lumi="231880.447953" NEventsMax="-1" Type="MC" Version="TTbarSemiLep" Cacheable="True">
+&TTbarSemiLep;
 <InputTree Name="AnalysisTree" /> 
 <OutputTree Name="AnalysisTree" />
       </InputData>
 
+ <InputData Lumi="284141.069959" NEventsMax="-1" Type="MC" Version="TTbarHadronic" Cacheable="True">
+&TTbarHadronic;
+<InputTree Name="AnalysisTree" /> 
+<OutputTree Name="AnalysisTree" />
+      </InputData>
 
+<!--
 
  <InputData Lumi="28783536.5854" NEventsMax="-1" Type="MC" Version="TPTHTH1000Inc" Cacheable="True"> 
 &TPTHTH1000Inc;
@@ -474,6 +478,10 @@
 
 -->
 
+
+
+
+
 		<UserConfig>
 		      <Item Name="JetCollection" Value="goodPatJetsPFlow" /> 
 		      <Item Name="ElectronCollection" Value="selectedPatElectronsPFlow" /> 
@@ -482,8 +490,8 @@
 		      <Item Name="PrimaryVertexCollection" Value="goodOfflinePrimaryVertices" /> 
 		      <Item Name="METName" Value="patMETsPFlow" /> 
 <!-- For Hep Tagger:-->
-		      <!--<Item Name="TopJetCollection" Value="goodPatJetsCAHEPTopTagPF" /> -->
-		       <Item Name="TopJetCollection" Value="goodPatJetsCA15MassDropFilteredPF"/>
+		      <Item Name="TopJetCollection" Value="goodPatJetsCAHEPTopTagPFPacked" /> 
+		       <!--Item Name="TopJetCollection" Value="goodPatJetsCA15MassDropFilteredPF"/-->
 
 		      <!--<Item Name="PrunedJetCollection" Value="goodPatJetsCA8PrunedPF" /> -->
 		      <!--Item Name="TopJetCollectionGen" Value="caTopTagGen" /> -->
@@ -498,18 +506,19 @@
 		      <!---Item Name="LumiFilePath" Value="/afs/naf.desy.de/user/k/kogler/w0/SFrame/SFrameAnalysis/config/lumifiles" /-->
 		      <!--Item Name="LumiFileName" Value="GoodRun_May12.root" /-->
 		      <!--Item Name="LumiTrigger" Value="HLT_PFJet320_v" /-->
-		     <Item Name="PU_Filename_MC" Value="/scratch/hh/dust/naf/cms/user/imarches/UHHAnalysis/SFrame/SFrameAnalysis/config/PileUpHistos/PileUpHistoCycle"/>
-		      <Item Name="PU_Filename_Data" Value="/scratch/hh/lustre/cms/user/imarches/UHHAnalysis/SFrame/SFrameAnalysis/config/PileUpHistos/MyDataPileupHistogram.root"/>
-		      <Item Name="PU_Histname_MC" Value="N_pileup_hist" />
+
+		      <!--<Item Name="PU_Filename_MC" Value="/scratch/hh/dust/naf/cms/user/peiffer/Analysis53X_v3/PileUpHistos/PileUpHistoCycle" />
+		      <Item Name="PU_Filename_Data" Value="/scratch/hh/dust/naf/cms/user/peiffer/Analysis53X_v3/PileUpHistos/MyDataPileupHistogram.root" />
 		      <Item Name="PU_Histname_Data" Value="pileup" />
+		      <Item Name="PU_Histname_MC" Value="N_pileup_hist" />-->
+
+		     
 		    <Item Name="JECFileLocation" Value="/scratch/hh/dust/naf/cms/user/imarches/corrections" />
 		      <Item Name="JECDataGlobalTag" Value="FT_53_V10_AN3" />         
 		      <Item Name="JECMCGlobalTag" Value="START53_V7G" />
 		      <Item Name="JECJetCollection" Value="AK7PFchs" />
-		  <!--   <Item Name="BTagEffi_Filename_MC" Value="/scratch/hh/dust/naf/cms/user/hoeing/CMSSW_5_2_5/src/SFrame/SFrameAnalysis/config/Output/cutflowNewOrderOfCuts/cutflowCycle"/>
-		     <Item Name="BTaggingMode" Value="default" /> -->
-
-
+		     <Item Name="BTagEffi_Filename_MC" Value="/scratch/hh/dust/naf/cms/user/hoeing/newSFrame/CMSSW_5_2_5/src/SFrame/Output/btageffhistsAfterTopTag/cutflowCycle"/>
+		     <Item Name="BTaggingMode" Value="mean" />
                 </UserConfig>
 	</Cycle>
 </JobConfiguration>
