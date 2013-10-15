@@ -70,9 +70,13 @@ void cutflowHists::Init()
   Book( TH1F( "deltaPhiMothers", "", 20, 0, 3.5));
   Book( TH1F( "NPrimaryVertices", "n prim. vertices", 20, 0, 40));
   Book( TH1F( "topCandidatePt", "#p_{T} of top candidate (GeV)", 50, 0, 2000));
- Book( TH1F( "HiggsCandidatePt", "#p_{T} of Higgs candidate (GeV)", 50, 0, 2000));
- Book( TH1F( "topCandidateMass", "mass of top candidate (GeV)", 50, 0, 300));
- Book( TH1F( "HiggsCandidateMass", "mass of Higgs candidate (GeV)", 50, 0, 300));
+  Book( TH1F( "HiggsCandidatePt", "#p_{T} of Higgs candidate (GeV)", 50, 0, 2000));
+  Book( TH1F( "topCandidateMass", "mass of top candidate (GeV)", 50, 0, 300));
+  Book( TH1F( "HiggsCandidateMass", "mass of Higgs candidate (GeV)", 50, 0, 300));
+  Book( TH1F( "pairwiseMassCriterium1AllJets", "atan(m13/m12)", 20, -2, 2));
+  Book( TH1F( "pairwiseMassCriterium2AllJets", "m23/mjet", 50, 0, 1));
+  Book( TH1F( "pairwiseMassCriterium1AfterTag", "atan(m13/m12)", 20, -2, 2));
+  Book( TH1F( "pairwiseMassCriterium2AfterTag", "m23/mjet", 50, 0, 1));
 
 }
 
@@ -159,8 +163,69 @@ void cutflowHists::Fill()
   int countHiggsTagMT = 0;
   int countHiggsTagTT = 0;
 
+
+  int finallySelected = 1;
+  int indexTopCandidate = -99;
+  int indexHiggsCandidate = -99;
+  int nheptoptag=0;
+  int nhiggstag=0;
+  std::vector<int> topTaggedJets;
+  std::vector<int> HiggsTaggedJets;
+
+  //find top and higgs candidate used in the selection
+  for(unsigned int i=0; i< bcc->topjets->size(); ++i){
+    TopJet topjet =  bcc->topjets->at(i);
+    if(HepTopTagWithMatch(topjet) && subJetBTagTop(topjet, e_CSVM)>=1){
+      nheptoptag++;
+      topTaggedJets.push_back(i);
+    }
+    if (HiggsTag(topjet, e_CSVM, e_CSVM)){
+      nhiggstag++;
+      HiggsTaggedJets.push_back(i);
+    }
+  }
+
+  if (nheptoptag == 0){
+    finallySelected = 0;
+    if (nhiggstag != 0){
+      indexHiggsCandidate = HiggsTaggedJets[0];
+    }
+  }
+  if (nhiggstag == 0){
+    finallySelected = 0; 
+    if(nheptoptag != 0){
+      indexTopCandidate = topTaggedJets[0];
+    }
+  }
+
+
+  if(nheptoptag == 1 && nhiggstag == 1 && topTaggedJets[0] == HiggsTaggedJets[0]){
+    finallySelected = 0;
+    indexTopCandidate = topTaggedJets[0];
+  }
+ 
+  if (finallySelected == 1){
+    if (topTaggedJets[0] != HiggsTaggedJets[0]){
+      indexTopCandidate = topTaggedJets[0];
+      indexHiggsCandidate = HiggsTaggedJets[0];
+    }
+    if (topTaggedJets[0] == HiggsTaggedJets[0]){
+      if (HiggsTaggedJets.size()>1){
+	indexTopCandidate = topTaggedJets[0];
+	indexHiggsCandidate = HiggsTaggedJets[1];
+      }
+      if(HiggsTaggedJets.size()==1){
+	indexTopCandidate = topTaggedJets[1];
+	indexHiggsCandidate = HiggsTaggedJets[1];
+      }     
+    }
+  }
+
+
   double HTJets = 0.;
   double HTJetsHighPt = 0.;
+  double pairwiseMassCrit1;
+  double pairwiseMassCrit2;
   for (unsigned int itj=0;itj<bcc->jets->size();itj++){
     if(bcc->jets->at(itj).pt()<ptcutjets) continue;
     HTJets += jets->at(itj).pt();
@@ -168,50 +233,56 @@ void cutflowHists::Fill()
   Hist("HTJets")-> Fill(HTJets, weight);
   int HTTopJets = 0.;
   for(int i =0; i<bcc->topjets->size(); i++ ){
-    if(bcc->topjets->at(i).pt()<ptcut) continue;
-    TopJet myJet = bcc->topjets->at(i);
+     TopJet myJet = bcc->topjets->at(i);
     HTTopJets += myJet.pt();
+    pairwiseMassCrit1 = HepTopTagPairwiseMassWithMatch1(myJet);
+    pairwiseMassCrit2 = HepTopTagPairwiseMassWithMatch2(myJet);
+    Hist("pairwiseMassCriterium1AllJets")-> Fill(pairwiseMassCrit1);
+    Hist("pairwiseMassCriterium2AllJets")-> Fill(pairwiseMassCrit2);
+
+    
+    if (i == indexTopCandidate){
+	Hist("topCandidatePt") -> Fill(HepTopTagMatchPt(myJet), weight);
+       	Hist("topCandidateMass") -> Fill(HepTopTagMatchMass(myJet), weight);
+      }
+
+      if (i == indexHiggsCandidate){
+	  Hist("HiggsCandidatePt") -> Fill(myJet.pt(), weight);
+	  Hist("HiggsCandidateMass") -> Fill(myJet.v4().M(), weight);
+      }    
+
     if (HepTopTagWithMatch(myJet)){
       nTopTags+= 1;
+      Hist("pairwiseMassCriterium1AfterTag")-> Fill(pairwiseMassCrit1);
+      Hist("pairwiseMassCriterium2AfterTag")-> Fill(pairwiseMassCrit2);
       if( nTopTags == 1 && indexTopJet1 == -99) indexTopJet1 = i;
       if( nTopTags == 2 && indexTopJet2 == -99) indexTopJet2 = i;
-      nSubTagsL = subJetBTag(myJet, e_CSVL);
-      nSubTagsM = subJetBTag(myJet, e_CSVM);
-      nSubTagsT = subJetBTag(myJet, e_CSVT);
-      Hist("nSubJetBTagsL") -> Fill(nSubTagsL, weight);
+      nSubTagsL = subJetBTagTop(myJet, e_CSVL);
+      nSubTagsM = subJetBTagTop(myJet, e_CSVM);
+      nSubTagsT = subJetBTagTop(myJet, e_CSVT);
+      
+      Hist("nSubJetBTagsL") -> Fill(nSubTagsL, weight);//how many loose wp subjet b-tags do we have on a top tagged jet (any top tagged jet)
       Hist("nSubJetBTagsM") -> Fill(nSubTagsM, weight);
       Hist("nSubJetBTagsT") -> Fill(nSubTagsT, weight);
+
       if (nSubTagsL > 0) countTopTagPlusSubBTagL++;
       if (nSubTagsM > 0) countTopTagPlusSubBTagM++;  
       if (nSubTagsT > 0) countTopTagPlusSubBTagT++;
       if (countTopTagPlusSubBTagM == 1 && indexFirstTopJet == -99)indexFirstTopJet = i;
-      if (i == indexFirstTopJet){
-	Hist("topCandidatePt") -> Fill(myJet.pt(), weight);
-	//Hist("topCandidateMass") -> Fill(myJet.m(), weight);
-      }
     }
-  }
-  
-  for(int i =0; i<bcc->topjets->size(); i++ ){
-    if(bcc->topjets->at(i).pt()<ptcut) continue;
-    TopJet myJet = bcc->topjets->at(i);
-    if(i != indexFirstTopJet){
+
+    if(i != indexTopCandidate){
       if (HiggsTag(myJet, e_CSVL, e_CSVL)) countHiggsTagLL++;  
       if (HiggsTag(myJet, e_CSVL, e_CSVM)) countHiggsTagLM++; 
-      if (HiggsTag(myJet, e_CSVM, e_CSVM)) {
-	countHiggsTagMM++;
-	if (countHiggsTagMM == 1){
-	  Hist("HiggsCandidatePt") -> Fill(myJet.pt(), weight);
-	  // Hist("HiggsCandidateMass") -> Fill(myJet.m(), weight);
-	} 
-      }
+      if (HiggsTag(myJet, e_CSVM, e_CSVM)) countHiggsTagMM++;
       if (HiggsTag(myJet, e_CSVM, e_CSVT)) countHiggsTagMT++; 
       if (HiggsTag(myJet, e_CSVT, e_CSVT)) countHiggsTagTT++;
       if (countHiggsTagLL == 1 && indexHiggs1 == -99) indexHiggs1 = i;
-      if (countHiggsTagLL == 2 && indexHiggs2 == -99) indexHiggs2 = i;
-      
+      if (countHiggsTagLL == 2 && indexHiggs2 == -99) indexHiggs2 = i;     
     }
   }
+  
+ 
 
   Hist("HTTopJets")-> Fill(HTTopJets, weight);
   Hist("nTopTags") -> Fill(nTopTags, weight);
