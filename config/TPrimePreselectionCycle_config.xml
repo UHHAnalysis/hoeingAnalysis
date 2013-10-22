@@ -3,15 +3,27 @@
 <!--<!ENTITY TTbar SYSTEM "ttbsm_53x_v2_cfg_withdouble_nomassdrop_ntuplewriter_cfg_withdouble_Summer12_DR53X_TTJets_MassiveBinDECAY_TuneZ2star_8TeV-madgraph-tauola_AODSIM_PU_S10_START53_V7A-v1.xml">-->
 
 
-<!ENTITY TTbarSemiLep SYSTEM "TTJets_SemiLeptMGDecays_8TeV-madgraph.xml">
-<!ENTITY TTbarHadronic SYSTEM "TTJets_HadronicMGDecays_8TeV-madgraph.xml">
-<!ENTITY QCD500to1000 SYSTEM "QCD_HT-500To1000_TuneZ2star_8TeV-madgraph-pythia6.xml">
-<!ENTITY QCD1000 SYSTEM "QCD_HT-1000ToInf_TuneZ2star_8TeV-madgraph-pythia6.xml">
-
+<!ENTITY TTbarSemiLep SYSTEM "TTJets_SemiLeptMGDecays_8TeV-madgraph_ntuplewriter_ttbsm_53_plusprunedcfg.xml">
+<!ENTITY TTbarHadronic SYSTEM "TTJets_HadronicMGDecays_8TeV-madgraph_ntuplewriter_ttbsm_53_plusprunedcfg.xml">
+<!--<!ENTITY QCD250to500 SYSTEM "QCD_HT-250To500_TuneZ2star_8TeV-madgraph-pythia6.xml"-->
+<!ENTITY QCD500to1000 SYSTEM "ntuplewriter_ttbsm_53_plusprunedcfg_CA8_Summer12_DR53X_QCD_HT-500To1000_TuneZ2star_8TeV-madgraph-pythia6_AODSIM_PU_S10_START53_V7A-v1.xml">
+<!ENTITY QCD1000A SYSTEM "ntuplewriter_ttbsm_53_plusprunedcfg_CA8_Summer12_DR53X_QCD_HT-1000ToInf_TuneZ2star_8TeV-madgraph-pythia6_AODSIM_PU_S10_START53_V7A-v1_A.xml">
+<!ENTITY QCD1000B SYSTEM "ntuplewriter_ttbsm_53_plusprunedcfg_CA8_Summer12_DR53X_QCD_HT-1000ToInf_TuneZ2star_8TeV-madgraph-pythia6_AODSIM_PU_S10_START53_V7A-v1_B.xml">
+<!ENTITY QCD1000C SYSTEM "ntuplewriter_ttbsm_53_plusprunedcfg_CA8_Summer12_DR53X_QCD_HT-1000ToInf_TuneZ2star_8TeV-madgraph-pythia6_AODSIM_PU_S10_START53_V7A-v1_C.xml">
 
 <!--
+<!ENTITY TPTHTH1000 SYSTEM "ntuplewriter_ttbsm_53_plusprunedcfg_HTTcorr_CA8_Summer12_DR53X_TprimeTprimeToTHTHinc_M-1000_TuneZ2star_8TeV-madgraph_AODSIM_PU_S10_START53_V7C-v1.xml">
+-->
 
-<!ENTITY TPTHTH1000Inc SYSTEM "ttbsm_53x_v2_cfg_mc_fly_Summer12_DR53X_TprimeTprimeToTHTHinc_M-1000_TuneZ2star_8TeV-madgraph_AODSIM_PU_S10_START53_V7C-v1.xml">
+
+<!ENTITY TPTHTH1000 SYSTEM "ntuplewriter_ttbsm_53_plusprunedcfg_CA8_Summer12_DR53X_TprimeTprimeToTHTHinc_M-1000_TuneZ2star_8TeV-madgraph_AODSIM_PU_S10_START53_V7C-v1.xml">
+<!ENTITY TPTHTH900 SYSTEM "ntuplewriter_ttbsm_53_plusprunedcfg_CA8_Summer12_DR53X_TprimeTprimeToTHTHinc_M-900_TuneZ2star_8TeV-madgraph_AODSIM_PU_S10_START53_V7C-v1.xml">
+<!ENTITY TPTHTH800 SYSTEM "ntuplewriter_ttbsm_53_plusprunedcfg_CA8_Summer12_DR53X_TprimeTprimeToTHTHinc_M-800_TuneZ2star_8TeV-madgraph_AODSIM_PU_S10_START53_V7C-v1.xml">
+<!ENTITY TPTHTH700 SYSTEM "ntuplewriter_ttbsm_53_plusprunedcfg_CA8_Summer12_DR53X_TprimeTprimeToTHTHinc_M-700_TuneZ2star_8TeV-madgraph_AODSIM_PU_S10_START53_V7C-v1.xml">
+<!ENTITY TPTHTH600 SYSTEM "ntuplewriter_ttbsm_53_plusprunedcfg_CA8_Summer12_DR53X_TprimeTprimeToTHTHinc_M-600_TuneZ2star_8TeV-madgraph_AODSIM_PU_S10_START53_V7C-v1.xml">
+<!ENTITY TPTHTH500 SYSTEM "ntuplewriter_ttbsm_53_plusprunedcfg_CA8_Summer12_DR53X_TprimeTprimeToTHTHinc_M-500_TuneZ2star_8TeV-madgraph_AODSIM_PU_S10_START53_V7C-v1.xml">
+
+<!--
 <!ENTITY TPTHTH900Inc SYSTEM "ttbsm_53x_v2_cfg_mc_fly_Summer12_DR53X_TprimeTprimeToTHTHinc_M-900_TuneZ2star_8TeV-madgraph_AODSIM_PU_S10_START53_V7C-v1.xml">
 <!ENTITY TPTHTH800Inc SYSTEM "ttbsm_53x_v2_cfg_mc_fly_Summer12_DR53X_TprimeTprimeToTHTHinc_M-800_TuneZ2star_8TeV-madgraph_AODSIM_PU_S10_START53_V7C-v1.xml">
 <!ENTITY TPTHTH700Inc SYSTEM "ttbsm_53x_v2_cfg_mc_fly_Summer12_DR53X_TprimeTprimeToTHTHinc_M-700_TuneZ2star_8TeV-madgraph_AODSIM_PU_S10_START53_V7C-v1.xml">
@@ -52,26 +64,16 @@
 <!ENTITY TPTZTZ700Inc SYSTEM "ttbsm_53x_v2_cfg_mc_fly_Summer12_DR53X_TprimeTprimeToTZTZinc_M-700_TuneZ2star_8TeV-madgraph_AODSIM_PU_S10_START53_V7A-v1.xml">
 <!ENTITY TPTZTZ600Inc SYSTEM "ttbsm_53x_v2_cfg_mc_fly_Summer12_DR53X_TprimeTprimeToTZTZinc_M-600_TuneZ2star_8TeV-madgraph_AODSIM_PU_S10_START53_V7A-v1.xml">
 <!ENTITY TPTZTZ500Inc SYSTEM "ttbsm_53x_v2_cfg_mc_fly_Summer12_DR53X_TprimeTprimeToTZTZinc_M-500_TuneZ2star_8TeV-madgraph_AODSIM_PU_S10_START53_V7A-v1.xml">
+-->
 
-<!ENTITY DATAB-13Jul2012 SYSTEM "ttbsm_53x_JetHT_Run2012B-13Jul2012-v1_AOD.xml">
-<!ENTITY DATAC-24Aug2012 SYSTEM "ttbsm_53x_JetHT_Run2012C-24Aug2012-v2_AOD.xml">
+<!ENTITY DATAA SYSTEM "Jet_Run2012A-22Jan2013-v1_ntuplewriter_ttbsm_53_plusprunedcfg.xml">
+<!ENTITY DATAB SYSTEM "JetHT_Run2012B-22Jan2013-v1_ntuplewriter_ttbsm_53_plusprunedcfg.xml">
+<!ENTITY DATAC SYSTEM "JetHT_Run2012C-22Jan2013-v1_ntuplewriter_ttbsm_53_plusprunedcfg.xml">
+<!ENTITY DATAD SYSTEM "JetHT_Run2012D-22Jan2013-v1_ntuplewriter_ttbsm_53_plusprunedcfg.xml">
 
 
-<!ENTITY DATAC-PromptReco SYSTEM "ttbsm_53x_JetHT_Run2012C-PromptReco-v2_AOD.xml">
 
-<!ENTITY DATAC-PromptRecoA SYSTEM "ttbsm_53x_JetHT_Run2012C-PromptReco-v2_AOD_split1.xml">
-<!ENTITY DATAC-PromptRecoB SYSTEM "ttbsm_53x_JetHT_Run2012C-PromptReco-v2_AOD_split2.xml">
-<!ENTITY DATAC-PromptRecoC SYSTEM "ttbsm_53x_JetHT_Run2012C-PromptReco-v2_AOD_split3.xml">
 
-<!ENTITY DATAD-PromptReco SYSTEM "ttbsm_53x_JetHT_Run2012D-PromptReco-v1_AOD.xml">
-
-<!ENTITY DATAD-PromptRecoA SYSTEM "ttbsm_53x_JetHT_Run2012D-PromptReco-v1_AOD_split1.xml">
-<!ENTITY DATAD-PromptRecoB SYSTEM "ttbsm_53x_JetHT_Run2012D-PromptReco-v1_AOD_split2.xml">
-<!ENTITY DATAD-PromptRecoC SYSTEM "ttbsm_53x_JetHT_Run2012D-PromptReco-v1_AOD_split3.xml">
-
-<!ENTITY DATAA-13Jul2012 SYSTEM "ttbsm_53x_Jet_Run2012A-13Jul2012-v1_AOD.xml"> 
-<!ENTITY DATAA-recover SYSTEM "ttbsm_53x_Jet_Run2012A-recover-06Aug2012-v1_AOD.xml">
- -->
 
 ]>
 
@@ -94,94 +96,53 @@
 
 
 
-	<Cycle Name="TPrimePreselectionCycle" RunMode="PROOF" ProofServer="lite://"  ProofWorkDir="" OutputDirectory="../../Output/TPrimePreselection/" PostFix="" TargetLumi="19483.0">
+	<Cycle Name="TPrimePreselectionCycle" RunMode="PROOF" ProofServer="lite://"  ProofWorkDir="" OutputDirectory="../../Output/TPrimePreselection_CA8Pruned/" PostFix="" TargetLumi="19708.0">
 	
 	
 	
 <!-- <Cycle Name="TPrimePreselectionCycle" OutputDirectory="../../Output/TPrimePreselection//" PostFix="" TargetLumi="19483.0">-->
 
 
+
+
+
 <!--
 
-
-
-
-<InputData Lumi="19483." NEventsMax="-1" Type="DATA" Version="DATA1" Cacheable="True">
-&DATAB-13Jul2012;
+<InputData Lumi="19708." NEventsMax="-1" Type="DATA" Version="DATAA" Cacheable="True">
+&DATAA;
 <InputTree Name="AnalysisTree" />
 <OutputTree Name="AnalysisTree" />
       </InputData>
 
 
-<InputData Lumi="19483." NEventsMax="-1" Type="DATA" Version="DATA2" Cacheable="True">
-&DATAC-24Aug2012;
+<InputData Lumi="19708." NEventsMax="-1" Type="DATA" Version="DATAB" Cacheable="True">
+&DATAB;
 <InputTree Name="AnalysisTree" />
 <OutputTree Name="AnalysisTree" />
       </InputData>
 
 
-<InputData Lumi="19483." NEventsMax="-1" Type="DATA" Version="DATA3A" Cacheable="True">
-&DATAC-PromptRecoA;
-<InputTree Name="AnalysisTree" />
-<OutputTree Name="AnalysisTree" />
-      </InputData
-
-<InputData Lumi="19483." NEventsMax="-1" Type="DATA" Version="DATA3B" Cacheable="True">
-&DATAC-PromptRecoB;
+<InputData Lumi="19708." NEventsMax="-1" Type="DATA" Version="DATAC" Cacheable="True">
+&DATAC;
 <InputTree Name="AnalysisTree" />
 <OutputTree Name="AnalysisTree" />
       </InputData>
 
-<InputData Lumi="19483." NEventsMax="-1" Type="DATA" Version="DATA3C" Cacheable="True">
-&DATAC-PromptRecoC;
+
+<InputData Lumi="19708." NEventsMax="-1" Type="DATA" Version="DATAD" Cacheable="True">
+&DATAD;
 <InputTree Name="AnalysisTree" />
 <OutputTree Name="AnalysisTree" />
       </InputData>
 
 
 
-
-<InputData Lumi="19483." NEventsMax="-1" Type="DATA" Version="DATA4A" Cacheable="True">
-&DATAD-PromptRecoA;
+<InputData Lumi="97.7594202899" NEventsMax="-1" Type="MC" Version="QCD250to500" Cacheable="True"> 
+&QCD250to500;
 <InputTree Name="AnalysisTree" />
 <OutputTree Name="AnalysisTree" />
-      </InputData>
-
-
-
-<InputData Lumi="19483." NEventsMax="-1" Type="DATA" Version="DATA4B" Cacheable="True">
-&DATAD-PromptRecoB;
-<InputTree Name="AnalysisTree" />
-<OutputTree Name="AnalysisTree" />
-      </InputData>
-
-
-
-<InputData Lumi="19483." NEventsMax="-1" Type="DATA" Version="DATA4C" Cacheable="True">
-&DATAD-PromptRecoC;
-<InputTree Name="AnalysisTree" />
-<OutputTree Name="AnalysisTree" />
-      </InputData>
-
-
-
-<InputData Lumi="19483." NEventsMax="-1" Type="DATA" Version="DATA5" Cacheable="True">
-&DATAA-13Jul2012;
-<InputTree Name="AnalysisTree" />
-<OutputTree Name="AnalysisTree" />
-      </InputData>
-
-
-<InputData Lumi="19483." NEventsMax="-1" Type="DATA" Version="DATA6" Cacheable="True">
-&DATAA-recover;
- <InputTree Name="AnalysisTree" />
-<OutputTree Name="AnalysisTree" />
-      </InputData>
-
-
-
+                </InputData>
 -->
-
 
 <InputData Lumi="3601.48670781" NEventsMax="-1" Type="MC" Version="QCD500to1000" Cacheable="True"> 
 &QCD500to1000;
@@ -189,23 +150,33 @@
 <OutputTree Name="AnalysisTree" />
                 </InputData>
 
-
-
-
-<InputData Lumi="66508.4166667" NEventsMax="-1" Type="MC" Version="QCD1000" Cacheable="True"> 
-&QCD1000;
+<InputData Lumi="66508.4166667" NEventsMax="-1" Type="MC" Version="QCD1000A" Cacheable="True"> 
+&QCD1000A;
 <InputTree Name="AnalysisTree" />
 <OutputTree Name="AnalysisTree" />
                 </InputData>
 
+<InputData Lumi="66508.4166667" NEventsMax="-1" Type="MC" Version="QCD1000B" Cacheable="True"> 
+&QCD1000B;
+<InputTree Name="AnalysisTree" />
+<OutputTree Name="AnalysisTree" />
+                </InputData>
 
+<InputData Lumi="66508.4166667" NEventsMax="-1" Type="MC" Version="QCD1000C" Cacheable="True"> 
+&QCD1000C;
+<InputTree Name="AnalysisTree" />
+<OutputTree Name="AnalysisTree" />
+                </InputData>
 
+<!--
 
- <InputData Lumi="231880.447953" NEventsMax="-1" Type="MC" Version="TTbarSemiLep" Cacheable="True">
+ <InputData Lumi="231964.558473" NEventsMax="-1" Type="MC" Version="TTbarSemiLep" Cacheable="True">
 &TTbarSemiLep;
 <InputTree Name="AnalysisTree" /> 
 <OutputTree Name="AnalysisTree" />
       </InputData>
+
+
 
  <InputData Lumi="284141.069959" NEventsMax="-1" Type="MC" Version="TTbarHadronic" Cacheable="True">
 &TTbarHadronic;
@@ -213,50 +184,53 @@
 <OutputTree Name="AnalysisTree" />
       </InputData>
 
+-->
+
+
+<InputData Lumi="24377083.3333" NEventsMax="-1" Type="MC" Version="TPTHTH1000" Cacheable="True"> 
+&TPTHTH1000;
+<InputTree Name="AnalysisTree" />
+<OutputTree Name="AnalysisTree" />
+        </InputData> 
+
+
+
+<InputData Lumi="11463888.8889" NEventsMax="-1" Type="MC" Version="TPTHTH900" Cacheable="True"> 
+&TPTHTH900;
+<InputTree Name="AnalysisTree" />
+<OutputTree Name="AnalysisTree" />
+        </InputData> 
+
+<InputData Lumi="2829577.46479" NEventsMax="-1" Type="MC" Version="TPTHTH800" Cacheable="True"> 
+&TPTHTH800;
+<InputTree Name="AnalysisTree" />
+<OutputTree Name="AnalysisTree" />
+        </InputData> 
+
+
+<InputData Lumi="1156376.06838" NEventsMax="-1" Type="MC" Version="TPTHTH700" Cacheable="True"> 
+&TPTHTH700;
+<InputTree Name="AnalysisTree" />
+<OutputTree Name="AnalysisTree" />
+        </InputData> 
+
+
+<InputData Lumi="550913.793103" NEventsMax="-1" Type="MC" Version="TPTHTH600" Cacheable="True"> 
+&TPTHTH600;
+<InputTree Name="AnalysisTree" />
+<OutputTree Name="AnalysisTree" />
+        </InputData> 
+
+
+ <InputData Lumi="165983.050847" NEventsMax="-1" Type="MC" Version="TPTHTH500" Cacheable="True">
+&TPTHTH500;
+<InputTree Name="AnalysisTree" />
+<OutputTree Name="AnalysisTree" />
+        </InputData> 
+
+
+
 <!--
-
- <InputData Lumi="28783536.5854" NEventsMax="-1" Type="MC" Version="TPTHTH1000Inc" Cacheable="True"> 
-&TPTHTH1000Inc;
-<InputTree Name="AnalysisTree" />
-<OutputTree Name="AnalysisTree" />
-        </InputData> 
-
-<InputData Lumi="12259875.7764" NEventsMax="-1" Type="MC" Version="TPTHTH900Inc" Cacheable="True"> 
-&TPTHTH900Inc;
-<InputTree Name="AnalysisTree" />
-<OutputTree Name="AnalysisTree" />
-        </InputData> 
-
-<InputData Lumi="2993701.92308" NEventsMax="-1" Type="MC" Version="TPTHTH800Inc" Cacheable="True"> 
-&TPTHTH800Inc;
-<InputTree Name="AnalysisTree" />
-<OutputTree Name="AnalysisTree" />
-        </InputData> 
-
-
-<InputData Lumi="1623093.14587" NEventsMax="-1" Type="MC" Version="TPTHTH700Inc" Cacheable="True"> 
-&TPTHTH700Inc;
-<InputTree Name="AnalysisTree" />
-<OutputTree Name="AnalysisTree" />
-        </InputData> 
-
-
-<InputData Lumi="577718.160377" NEventsMax="-1" Type="MC" Version="TPTHTH600Inc" Cacheable="True"> 
-&TPTHTH600Inc;
-<InputTree Name="AnalysisTree" />
-<OutputTree Name="AnalysisTree" />
-        </InputData> 
-
-
- <InputData Lumi="174856.140351" NEventsMax="-1" Type="MC" Version="TPTHTH500Inc" Cacheable="True">
-&TPTHTH500Inc;
-<InputTree Name="AnalysisTree" />
-<OutputTree Name="AnalysisTree" />
-        </InputData> 
-
-
-
-
 
 
 <InputData Lumi="29809451.2195" NEventsMax="-1" Type="MC" Version="TPBWBW1000Inc" Cacheable="True"> 
@@ -489,8 +463,10 @@
 		      <Item Name="TauCollection" Value="selectedPatTausPFlow" />
 		      <Item Name="PrimaryVertexCollection" Value="goodOfflinePrimaryVertices" /> 
 		      <Item Name="METName" Value="patMETsPFlow" /> 
-<!-- For Hep Tagger:-->
-		      <Item Name="TopJetCollection" Value="goodPatJetsCAHEPTopTagPFPacked" /> 
+		      <!-- For Hep Tagger:-->
+		      <Item Name="TopTagJetCollection" Value="goodPatJetsCAHEPTopTagPFPacked" />
+		      <Item Name="TopJetCollection" Value="goodPatJetsCA8PrunedPFPacked"/> 
+		      <!--Item Name="TopJetCollection" Value="goodPatJetsCAHEPTopTagPFPacked" /--> 
 		       <!--Item Name="TopJetCollection" Value="goodPatJetsCA15MassDropFilteredPF"/-->
 
 		      <!--<Item Name="PrunedJetCollection" Value="goodPatJetsCA8PrunedPF" /> -->
@@ -506,17 +482,21 @@
 		      <!---Item Name="LumiFilePath" Value="/afs/naf.desy.de/user/k/kogler/w0/SFrame/SFrameAnalysis/config/lumifiles" /-->
 		      <!--Item Name="LumiFileName" Value="GoodRun_May12.root" /-->
 		      <!--Item Name="LumiTrigger" Value="HLT_PFJet320_v" /-->
+		      <Item Name="PU_Filename_MC" Value="/scratch/hh/dust/naf/cms/user/hoeing/PileUpHistos/PileUpHistoCycle" />
 
-		      <!--<Item Name="PU_Filename_MC" Value="/scratch/hh/dust/naf/cms/user/peiffer/Analysis53X_v3/PileUpHistos/PileUpHistoCycle" />
+		      <!--<Item Name="PU_Filename_Data" Value="/scratch/hh/dust/naf/cms/user/hoeing/PileUpHistos/MyDataPileupHistogram.root" />-->
 		      <Item Name="PU_Filename_Data" Value="/scratch/hh/dust/naf/cms/user/peiffer/Analysis53X_v3/PileUpHistos/MyDataPileupHistogram.root" />
 		      <Item Name="PU_Histname_Data" Value="pileup" />
-		      <Item Name="PU_Histname_MC" Value="N_pileup_hist" />-->
+		      <Item Name="PU_Histname_MC" Value="N_pileup_hist" /> 
 
+		      <Item Name="JECFileLocation" Value="/scratch/hh/dust/naf/cms/user/imarches/JECfiles" />
+		      <Item Name="JECDataGlobalTag" Value="FT_53_V21_AN6" />
+		      <Item Name="JECMCGlobalTag" Value="START53_V27" />
+		      <Item Name="JECJetCollection" Value="AK5PFchs" />
+		      <Item Name="JECTopJetCollection" Value="AK7PFchs" />
+		      <Item Name="JECTopTagJetCollection" Value="AK7PFchs" />
 		     
-		    <Item Name="JECFileLocation" Value="/scratch/hh/dust/naf/cms/user/imarches/corrections" />
-		      <Item Name="JECDataGlobalTag" Value="FT_53_V10_AN3" />         
-		      <Item Name="JECMCGlobalTag" Value="START53_V7G" />
-		      <Item Name="JECJetCollection" Value="AK7PFchs" />
+		     
 		     <Item Name="BTagEffi_Filename_MC" Value="/scratch/hh/dust/naf/cms/user/hoeing/newSFrame/CMSSW_5_2_5/src/SFrame/Output/btageffhistsAfterTopTag/cutflowCycle"/>
 		     <Item Name="BTaggingMode" Value="mean" />
                 </UserConfig>

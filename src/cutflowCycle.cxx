@@ -210,6 +210,7 @@ void cutflowCycle::ExecuteEvent( const SInputData& id, Double_t weight) throw( S
   bool invertTopTag = 0;
   bool invertHiggsTag = 0;
   bool invertTopAndHiggsTag = 0;
+  bool regularSelection = 1;
 
 
 
@@ -224,7 +225,7 @@ void cutflowCycle::ExecuteEvent( const SInputData& id, Double_t weight) throw( S
   //    if(HT1000->passSelection(bcc))Histscutflow3->Fill();
   // else throw SError( SError::SkipEvent );
   
-  //  if (IsRealData == false)BTagEff_Hists->Fill(); 
+  
   if(invertTopTag){
     if (invertedTopTag->passSelection(bcc)) Histscutflow6->Fill();
     else throw SError( SError::SkipEvent );
@@ -237,13 +238,14 @@ void cutflowCycle::ExecuteEvent( const SInputData& id, Double_t weight) throw( S
     if (fullyInvertedTopAndHiggsTag->passSelection(bcc))Histscutflow6->Fill();
     else throw SError( SError::SkipEvent );
   }
-  else{
+  if (regularSelection){
     if(topTag->passSelection(bcc)) Histscutflow4->Fill();
     else throw SError( SError::SkipEvent );
-    if(topAndSubBTag->passSelection(bcc))Histscutflow5->Fill();
-    else throw SError( SError::SkipEvent );
-    if(topAndSubBTagPlusHiggsTag->passSelection(bcc))Histscutflow6->Fill();
-    else throw SError( SError::SkipEvent );
+    // if (IsRealData == false)BTagEff_Hists->Fill(); 
+   //  if(topAndSubBTag->passSelection(bcc))Histscutflow5->Fill();
+//     else throw SError( SError::SkipEvent );
+//     if(topAndSubBTagPlusHiggsTag->passSelection(bcc))Histscutflow6->Fill();
+//     else throw SError( SError::SkipEvent );
   }
  
 

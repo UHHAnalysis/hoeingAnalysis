@@ -58,12 +58,12 @@ void cutflowHists::Init()
   Book( TH1F( "InvMass22", "", 50, 0, 2000));
   Book( TH1F( "InvMassAll", "", 50, 0, 2000));
   Book( TH1F( "InvMassBackToBack", "", 50, 0, 2000));
-  Book( TH1F( "bestInvMass1TP1000", "", 100, 0, 2000));
-  Book( TH1F( "bestInvMass2TP1000", "", 100, 0, 2000));
-  Book( TH1F( "bestInvMass1TP700", "", 100, 0, 2000));
-  Book( TH1F( "bestInvMass2TP700", "", 100, 0, 2000));
-  Book( TH1F( "bestInvMass1TP500", "", 100, 0, 2000));
-  Book( TH1F( "bestInvMass2TP500", "", 100, 0, 2000));
+  Book( TH1F( "bestInvMass1TP1000", "", 50, 0, 2000));
+  Book( TH1F( "bestInvMass2TP1000", "", 50, 0, 2000));
+  Book( TH1F( "bestInvMass1TP700", "", 50, 0, 2000));
+  Book( TH1F( "bestInvMass2TP700", "", 50, 0, 2000));
+  Book( TH1F( "bestInvMass1TP500", "", 50, 0, 2000));
+  Book( TH1F( "bestInvMass2TP500", "", 50, 0, 2000));
   Book( TH1F( "test", "", 10, 0, 10));
   Book( TH1F( "deltaRDaughters", "", 100, 0, 10));
   Book( TH1F( "deltaPhiDaughters", "", 20, 0, 3.5));
@@ -77,6 +77,9 @@ void cutflowHists::Init()
   Book( TH1F( "pairwiseMassCriterium2AllJets", "m23/mjet", 50, 0, 1));
   Book( TH1F( "pairwiseMassCriterium1AfterTag", "atan(m13/m12)", 20, -2, 2));
   Book( TH1F( "pairwiseMassCriterium2AfterTag", "m23/mjet", 50, 0, 1));
+  Book( TH1F( "WMass", "m_{W} (GeV)", 50, 0, 150));
+  Book( TH1F( "WMassAfterTag", "m_{W} (GeV)", 50, 0, 150));
+  Book( TH1F( "InvMassCandidates", "m_{reco}(T') (GeV)", 50, 0, 2000));
 
 }
 
@@ -224,8 +227,9 @@ void cutflowHists::Fill()
 
   double HTJets = 0.;
   double HTJetsHighPt = 0.;
-  double pairwiseMassCrit1;
-  double pairwiseMassCrit2;
+  double pairwiseMassCrit1 = -99;
+  double pairwiseMassCrit2 = -99;
+  double WMassHEP = -99;
   for (unsigned int itj=0;itj<bcc->jets->size();itj++){
     if(bcc->jets->at(itj).pt()<ptcutjets) continue;
     HTJets += jets->at(itj).pt();
@@ -235,10 +239,12 @@ void cutflowHists::Fill()
   for(int i =0; i<bcc->topjets->size(); i++ ){
      TopJet myJet = bcc->topjets->at(i);
     HTTopJets += myJet.pt();
-    pairwiseMassCrit1 = HepTopTagPairwiseMassWithMatch1(myJet);
-    pairwiseMassCrit2 = HepTopTagPairwiseMassWithMatch2(myJet);
-    Hist("pairwiseMassCriterium1AllJets")-> Fill(pairwiseMassCrit1);
-    Hist("pairwiseMassCriterium2AllJets")-> Fill(pairwiseMassCrit2);
+     pairwiseMassCrit1 = HepTopTagPairwiseMassWithMatch1(myJet);
+     pairwiseMassCrit2 = HepTopTagPairwiseMassWithMatch2(myJet);
+     WMassHEP = WMassWithMatch(myJet);
+    Hist("pairwiseMassCriterium1AllJets") -> Fill(pairwiseMassCrit1, weight);
+    Hist("pairwiseMassCriterium2AllJets") -> Fill(pairwiseMassCrit2, weight);
+    Hist("WMass")-> Fill(WMassHEP, weight);
 
     
     if (i == indexTopCandidate){
@@ -253,8 +259,9 @@ void cutflowHists::Fill()
 
     if (HepTopTagWithMatch(myJet)){
       nTopTags+= 1;
-      Hist("pairwiseMassCriterium1AfterTag")-> Fill(pairwiseMassCrit1);
-      Hist("pairwiseMassCriterium2AfterTag")-> Fill(pairwiseMassCrit2);
+      Hist("pairwiseMassCriterium1AfterTag") -> Fill(pairwiseMassCrit1, weight);
+      Hist("pairwiseMassCriterium2AfterTag") -> Fill(pairwiseMassCrit2, weight);
+      Hist("WMassAfterTag") -> Fill(WMassHEP, weight);
       if( nTopTags == 1 && indexTopJet1 == -99) indexTopJet1 = i;
       if( nTopTags == 2 && indexTopJet2 == -99) indexTopJet2 = i;
       nSubTagsL = subJetBTagTop(myJet, e_CSVL);
@@ -304,9 +311,24 @@ void cutflowHists::Fill()
   double InvMass21 = -99;
   double InvMass22 = -99;
   double InvMassBackToBack = -99;
+  TopJet topCandidateJet;
+  TopJet HiggsCandidateJet;
+  double InvMassCandidates = -99;
 
-    if (indexTopJet1 != -99 &&indexHiggs1 != -99){
-   combinationJet1 = bcc->topjets->at(indexTopJet1);
+  if(indexTopCandidate != -99 && indexHiggsCandidate != -99){
+    topCandidateJet = bcc->topjets->at(indexTopCandidate);
+    HiggsCandidateJet = bcc->topjets->at(indexHiggsCandidate);
+    jet1Vec.SetPtEtaPhiE(topCandidateJet.pt(), topCandidateJet.eta(), topCandidateJet.phi(), topCandidateJet.energy());
+    jet2Vec.SetPtEtaPhiE(HiggsCandidateJet.pt(), HiggsCandidateJet.eta(), HiggsCandidateJet.phi(), HiggsCandidateJet.energy());
+    newVector = jet1Vec+jet2Vec;
+    InvMassCandidates = newVector.M();
+
+    
+  }
+Hist("InvMassCandidates") -> Fill(InvMassCandidates, weight);
+
+  if (indexTopJet1 != -99 &&indexHiggs1 != -99){
+    combinationJet1 = bcc->topjets->at(indexTopJet1);
     jet1Vec.SetPtEtaPhiE(combinationJet1.pt(), combinationJet1.eta(), combinationJet1.phi(), combinationJet1.energy());
     combinationJet2 =  bcc->topjets->at(indexHiggs1);  
     jet2Vec.SetPtEtaPhiE(combinationJet2.pt(), combinationJet2.eta(), combinationJet2.phi(), combinationJet2.energy());
@@ -341,43 +363,43 @@ void cutflowHists::Fill()
     }
     if (indexTopJet2 == -99)InvMassBackToBack = InvMass11;
     
-    }
-    Hist("InvMass11")-> Fill(InvMass11, weight);
-    Hist("InvMass21")-> Fill(InvMass21, weight);
-    Hist("InvMass22")-> Fill(InvMass22, weight);
-    Hist("InvMassAll")-> Fill(InvMass11, weight);
-    Hist("InvMassAll")-> Fill(InvMass21, weight);
-    Hist("InvMassAll")-> Fill(InvMass22, weight);
-    Hist("InvMassBackToBack")-> Fill(InvMassBackToBack, weight);
+  }
+  Hist("InvMass11")-> Fill(InvMass11, weight);
+  Hist("InvMass21")-> Fill(InvMass21, weight);
+  Hist("InvMass22")-> Fill(InvMass22, weight);
+  Hist("InvMassAll")-> Fill(InvMass11, weight);
+  Hist("InvMassAll")-> Fill(InvMass21, weight);
+  Hist("InvMassAll")-> Fill(InvMass22, weight);
+  Hist("InvMassBackToBack")-> Fill(InvMassBackToBack, weight);
 
 
      
-    if(IsRealData == false){
-      bool secondTPrime = false;
-      GenParticle TPrime1;
-      GenParticle TPrime2;
+  if(IsRealData == false){
+    bool secondTPrime = false;
+    GenParticle TPrime1;
+    GenParticle TPrime2;
 
-      for( int i=0; i<bcc->genparticles->size(); ++i){
+    for( int i=0; i<bcc->genparticles->size(); ++i){
  
-	GenParticle genp = bcc->genparticles->at(i); 
-	if (abs(genp.pdgId()) > 15000){//selects the Tprime
-	  if(secondTPrime == false) TPrime1 = genp;
-	  if(secondTPrime == true)  TPrime2 = genp;
-	  int indexDaughter1 = genp.daughter(bcc->genparticles,1)->index();
-	  int indexDaughter2 = genp.daughter(bcc->genparticles,2)->index();
-	  double deltaRDaughters = bcc->genparticles->at(indexDaughter1).deltaR(bcc->genparticles->at(indexDaughter2));
-	  double deltaPhiDaughters = bcc->genparticles->at(indexDaughter1).deltaPhi(bcc->genparticles->at(indexDaughter2));
-	  Hist("deltaRDaughters") ->  Fill(deltaRDaughters);
-	  Hist("deltaPhiDaughters") ->  Fill(deltaPhiDaughters);
-	  // if (secondTPrime = false){
-	  // 	GenParticle TPrime1Daughter1 = bcc->genparticles->at(indexDaughter1);
-	  // 	GenParticle TPrime1Daughter2 = bcc->genparticles->at(indexDaughter2);
-	  //       }
-	  //       else {
-	  // 	GenParticle TPrime2Daughter1 = bcc->genparticles->at(indexDaughter1);
-	  // 	GenParticle TPrime2Daughter2 = bcc->genparticles->at(indexDaughter2);
-	  //       }
-	  secondTPrime = true;
+      GenParticle genp = bcc->genparticles->at(i); 
+      if (abs(genp.pdgId()) > 15000){//selects the Tprime
+	if(secondTPrime == false) TPrime1 = genp;
+	if(secondTPrime == true)  TPrime2 = genp;
+	int indexDaughter1 = genp.daughter(bcc->genparticles,1)->index();
+	int indexDaughter2 = genp.daughter(bcc->genparticles,2)->index();
+	double deltaRDaughters = bcc->genparticles->at(indexDaughter1).deltaR(bcc->genparticles->at(indexDaughter2));
+	double deltaPhiDaughters = bcc->genparticles->at(indexDaughter1).deltaPhi(bcc->genparticles->at(indexDaughter2));
+	Hist("deltaRDaughters") ->  Fill(deltaRDaughters);
+	Hist("deltaPhiDaughters") ->  Fill(deltaPhiDaughters);
+	// if (secondTPrime = false){
+	// 	GenParticle TPrime1Daughter1 = bcc->genparticles->at(indexDaughter1);
+	// 	GenParticle TPrime1Daughter2 = bcc->genparticles->at(indexDaughter2);
+	//       }
+	//       else {
+	// 	GenParticle TPrime2Daughter1 = bcc->genparticles->at(indexDaughter1);
+	// 	GenParticle TPrime2Daughter2 = bcc->genparticles->at(indexDaughter2);
+	//       }
+	secondTPrime = true;
 	}
       }
   
