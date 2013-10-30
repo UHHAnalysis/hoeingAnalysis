@@ -31,7 +31,10 @@ public:
 
 
    /// Named constructor
-  cutflowHists(const char* name);
+  // cutflowHists(const char* name);
+
+  cutflowHists(const char* name,TString mode="default", TString filename="");
+  // named default constructor
 
    /// Default destructor
    ~cutflowHists();
@@ -51,6 +54,8 @@ private:
    std::vector<float>* m_test123;
 
    bool runWith4Jets;
+ std::string m_BTagEffiFilenameMC;
+   std::string m_BTaggingMode;
 
 float topJetConeSize;
 float rangeMmin[2];

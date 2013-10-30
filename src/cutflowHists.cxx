@@ -11,13 +11,27 @@
 using namespace std;
 
 
-cutflowHists::cutflowHists(const char* name) : BaseHists(name){
+// cutflowHists::cutflowHists(const char* name) : BaseHists(name){
+//   // named default constructor
+ 
+//   topJetConeSize = 1.5;
+//   runWith4Jets = true;
+
+ 
+// }
+
+
+cutflowHists::cutflowHists(const char* name, TString mode,TString filename) : BaseHists(name){
   // named default constructor
  
   topJetConeSize = 1.5;
   runWith4Jets = true;
+  m_BTaggingMode = mode;
+  m_BTagEffiFilenameMC=filename;
  
 }
+
+
 
 cutflowHists::~cutflowHists(){
   // default destructor, does nothing
@@ -71,8 +85,10 @@ void cutflowHists::Init()
   Book( TH1F( "NPrimaryVertices", "n prim. vertices", 20, 0, 40));
   Book( TH1F( "topCandidatePt", "#p_{T} of top candidate (GeV)", 50, 0, 2000));
   Book( TH1F( "HiggsCandidatePt", "#p_{T} of Higgs candidate (GeV)", 50, 0, 2000));
-  Book( TH1F( "topCandidateMass", "mass of top candidate (GeV)", 50, 0, 300));
-  Book( TH1F( "HiggsCandidateMass", "mass of Higgs candidate (GeV)", 50, 0, 300));
+  Book( TH1F( "topCandidateMass", "mass of top candidate (GeV)", 25, 0, 300));
+  Book( TH1F( "HiggsCandidateMass", "mass of Higgs candidate (GeV)", 25, 0, 300));
+  Book( TH1F( "HiggsCandidateMassFromSubjets", "mass of Higgs candidate (GeV)", 25, 0, 300));
+  Book( TH1F( "HiggsCandidateMassFromBTaggedSubjets", "mass of Higgs candidate (GeV)", 25, 0, 300));
   Book( TH1F( "pairwiseMassCriterium1AllJets", "atan(m13/m12)", 20, -2, 2));
   Book( TH1F( "pairwiseMassCriterium2AllJets", "m23/mjet", 50, 0, 1));
   Book( TH1F( "pairwiseMassCriterium1AfterTag", "atan(m13/m12)", 20, -2, 2));
@@ -98,6 +114,14 @@ void cutflowHists::Fill()
   LuminosityHandler* lumih = calc->GetLumiHandler();
   // important: get the event weight
   double weight = calc->GetWeight();
+
+  //bool IsRealData = calc->IsRealData();
+
+if(!IsRealData){
+weight=weight*HiggsBRweight();
+}
+
+
   int run = calc->GetRunNum();
   int lumiblock = calc->GetLumiBlock();
   int Npvs = calc->GetPrimaryVertices()->size();
@@ -255,6 +279,8 @@ void cutflowHists::Fill()
       if (i == indexHiggsCandidate){
 	  Hist("HiggsCandidatePt") -> Fill(myJet.pt(), weight);
 	  Hist("HiggsCandidateMass") -> Fill(myJet.v4().M(), weight);
+	  Hist("HiggsCandidateMassFromSubjets") -> Fill( HiggsMassFromSubjets(myJet),weight);
+	  Hist("HiggsCandidateMassFromBTaggedSubjets") -> Fill( HiggsMassFromBTaggedSubjets(myJet),weight);
       }    
 
     if (HepTopTagWithMatch(myJet)){

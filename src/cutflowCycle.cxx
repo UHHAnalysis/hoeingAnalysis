@@ -9,6 +9,7 @@ using namespace std;
 #include "include/cutflowCycle.h"
 #include "../SFrameAnalysis/include/SelectionModules.h"
 #include "include/cutflowHists.h"
+#include "../SFrameTools/include/Utils.h"
 
 ClassImp( cutflowCycle );
 
@@ -103,8 +104,8 @@ void cutflowCycle::BeginInputData( const SInputData& id ) throw( SError )
   trigger->addSelectionModule(new TriggerSelection("HLT_HT750"));
   nJets->addSelectionModule(new NTopJetSelection(2, 99, 0., 99.));
   topTag->addSelectionModule(new NHEPTopTagSelection(1, 99));
-  topAndSubBTag->addSelectionModule(new NHEPTopAndSubBTagSelection(1, 99, e_CSVM));
-  topAndSubBTagPlusHiggsTag->addSelectionModule(new HEPTopAndSubBTagPlusOtherHiggsTag(e_CSVM, e_CSVM, e_CSVM));
+  topAndSubBTag->addSelectionModule(new NHEPTopAndSubBTagSelection(1, 99, e_CSVM, m_BTaggingMode, m_BTagEffiFilenameMC));
+  topAndSubBTagPlusHiggsTag->addSelectionModule(new HEPTopAndSubBTagPlusOtherHiggsTag(e_CSVM, e_CSVM, e_CSVM, m_BTaggingMode, m_BTagEffiFilenameMC));
   HT1000->addSelectionModule(new HTCut(1000.));
   invertedTopTag->addSelectionModule(new InvertedTopTagRegularBTagRegularHiggsTag(e_CSVM, e_CSVM, e_CSVM, m_BTaggingMode, m_BTagEffiFilenameMC));
   fullyInvertedHiggsTag->addSelectionModule(new RegularTopTagRegularBTagFullyInvertedHiggsTag(e_CSVM, e_CSVL, e_CSVL, m_BTaggingMode, m_BTagEffiFilenameMC));
@@ -127,15 +128,24 @@ void cutflowCycle::BeginInputData( const SInputData& id ) throw( SError )
 
   // ---------------- set up the histogram collections --------------------
 
-  // histograms without any cuts
-  RegisterHistCollection( new cutflowHists("NoCuts") );
+ RegisterHistCollection( new cutflowHists("NoCuts",m_BTaggingMode,m_BTagEffiFilenameMC) );
   // histograms after the top selection
-  RegisterHistCollection( new cutflowHists("cutflow1") );
-  RegisterHistCollection( new cutflowHists("cutflow2") );
-  RegisterHistCollection( new cutflowHists("cutflow3") );
-  RegisterHistCollection( new cutflowHists("cutflow4") );
-  RegisterHistCollection( new cutflowHists("cutflow5") );
-  RegisterHistCollection( new cutflowHists("cutflow6") );
+  RegisterHistCollection( new cutflowHists("cutflow1" ,m_BTaggingMode,m_BTagEffiFilenameMC) );
+  RegisterHistCollection( new cutflowHists("cutflow2",m_BTaggingMode,m_BTagEffiFilenameMC) );
+  RegisterHistCollection( new cutflowHists("cutflow3",m_BTaggingMode,m_BTagEffiFilenameMC) );
+  RegisterHistCollection( new cutflowHists("cutflow4",m_BTaggingMode,m_BTagEffiFilenameMC) );
+  RegisterHistCollection( new cutflowHists("cutflow5",m_BTaggingMode,m_BTagEffiFilenameMC) );
+  RegisterHistCollection( new cutflowHists("cutflow6",m_BTaggingMode,m_BTagEffiFilenameMC) );
+
+  // histograms without any cuts
+  // RegisterHistCollection( new cutflowHists("NoCuts") );
+//   // histograms after the top selection
+//   RegisterHistCollection( new cutflowHists("cutflow1") );
+//   RegisterHistCollection( new cutflowHists("cutflow2") );
+//   RegisterHistCollection( new cutflowHists("cutflow3") );
+//   RegisterHistCollection( new cutflowHists("cutflow4") );
+//   RegisterHistCollection( new cutflowHists("cutflow5") );
+//   RegisterHistCollection( new cutflowHists("cutflow6") );
   RegisterHistCollection( new BTagEffHistsTPrime("BTagEff") );
 
   
@@ -241,11 +251,11 @@ void cutflowCycle::ExecuteEvent( const SInputData& id, Double_t weight) throw( S
   if (regularSelection){
     if(topTag->passSelection(bcc)) Histscutflow4->Fill();
     else throw SError( SError::SkipEvent );
-    // if (IsRealData == false)BTagEff_Hists->Fill(); 
-   //  if(topAndSubBTag->passSelection(bcc))Histscutflow5->Fill();
-//     else throw SError( SError::SkipEvent );
-//     if(topAndSubBTagPlusHiggsTag->passSelection(bcc))Histscutflow6->Fill();
-//     else throw SError( SError::SkipEvent );
+    //  if (IsRealData == false)BTagEff_Hists->Fill(); 
+    if(topAndSubBTag->passSelection(bcc))Histscutflow5->Fill();
+    else throw SError( SError::SkipEvent );
+    if(topAndSubBTagPlusHiggsTag->passSelection(bcc))Histscutflow6->Fill();
+    else throw SError( SError::SkipEvent );
   }
  
 

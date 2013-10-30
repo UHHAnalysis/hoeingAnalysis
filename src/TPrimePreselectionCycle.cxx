@@ -20,6 +20,8 @@ TPrimePreselectionCycle::TPrimePreselectionCycle()
 
   // set the integrated luminosity per bin for the lumi-yield control plots
   SetIntLumiPerBin(25.);
+ DeclareProperty( "BTagEffi_Filename_MC", m_BTagEffiFilenameMC );
+  DeclareProperty( "BTaggingMode", m_BTaggingMode);
  
 }
 
@@ -90,11 +92,17 @@ void TPrimePreselectionCycle::BeginInputData( const SInputData& id ) throw( SErr
   // ---------------- set up the histogram collections --------------------
 
   // histograms without any cuts
-  RegisterHistCollection( new cutflowHists("NoCuts") );
+//   RegisterHistCollection( new cutflowHists("NoCuts") );
+//   // histograms after the top selection
+//   RegisterHistCollection( new cutflowHists("cutflow1") );
+//   RegisterHistCollection( new cutflowHists("cutflow2") );
+//   RegisterHistCollection( new cutflowHists("cutflow3") );
+
+RegisterHistCollection( new cutflowHists("NoCuts",m_BTaggingMode,m_BTagEffiFilenameMC) );
   // histograms after the top selection
-  RegisterHistCollection( new cutflowHists("cutflow1") );
-  RegisterHistCollection( new cutflowHists("cutflow2") );
-  RegisterHistCollection( new cutflowHists("cutflow3") );
+  RegisterHistCollection( new cutflowHists("cutflow1" ,m_BTaggingMode,m_BTagEffiFilenameMC) );
+  RegisterHistCollection( new cutflowHists("cutflow2",m_BTaggingMode,m_BTagEffiFilenameMC) );
+  RegisterHistCollection( new cutflowHists("cutflow3",m_BTaggingMode,m_BTagEffiFilenameMC) );
  
 
   // RegisterHistCollection( new BTagEffHistsTPrime("BTagEff") );

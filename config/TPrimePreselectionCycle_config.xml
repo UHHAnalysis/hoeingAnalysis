@@ -6,22 +6,25 @@
 <!ENTITY TTbarSemiLep SYSTEM "TTJets_SemiLeptMGDecays_8TeV-madgraph_ntuplewriter_ttbsm_53_plusprunedcfg.xml">
 <!ENTITY TTbarHadronic SYSTEM "TTJets_HadronicMGDecays_8TeV-madgraph_ntuplewriter_ttbsm_53_plusprunedcfg.xml">
 <!--<!ENTITY QCD250to500 SYSTEM "QCD_HT-250To500_TuneZ2star_8TeV-madgraph-pythia6.xml"-->
-<!ENTITY QCD500to1000 SYSTEM "ntuplewriter_ttbsm_53_plusprunedcfg_CA8_Summer12_DR53X_QCD_HT-500To1000_TuneZ2star_8TeV-madgraph-pythia6_AODSIM_PU_S10_START53_V7A-v1.xml">
-<!ENTITY QCD1000A SYSTEM "ntuplewriter_ttbsm_53_plusprunedcfg_CA8_Summer12_DR53X_QCD_HT-1000ToInf_TuneZ2star_8TeV-madgraph-pythia6_AODSIM_PU_S10_START53_V7A-v1_A.xml">
-<!ENTITY QCD1000B SYSTEM "ntuplewriter_ttbsm_53_plusprunedcfg_CA8_Summer12_DR53X_QCD_HT-1000ToInf_TuneZ2star_8TeV-madgraph-pythia6_AODSIM_PU_S10_START53_V7A-v1_B.xml">
-<!ENTITY QCD1000C SYSTEM "ntuplewriter_ttbsm_53_plusprunedcfg_CA8_Summer12_DR53X_QCD_HT-1000ToInf_TuneZ2star_8TeV-madgraph-pythia6_AODSIM_PU_S10_START53_V7A-v1_C.xml">
+<!ENTITY QCD500to1000 SYSTEM "ntuplewriter_ttbsm_53_plusprunedcfg_Summer12_DR53X_QCD_HT-500To1000_TuneZ2star_8TeV-madgraph-pythia6_AODSIM_PU_S10_START53_V7A-v1.xml">
+<!ENTITY QCD1000A SYSTEM "ntuplewriter_ttbsm_53_plusprunedcfg_Summer12_DR53X_QCD_HT-1000ToInf_TuneZ2star_8TeV-madgraph-pythia6_AODSIM_PU_S10_START53_V7A-v1_A.xml">
+<!ENTITY QCD1000B SYSTEM "ntuplewriter_ttbsm_53_plusprunedcfg_Summer12_DR53X_QCD_HT-1000ToInf_TuneZ2star_8TeV-madgraph-pythia6_AODSIM_PU_S10_START53_V7A-v1_B.xml">
+<!ENTITY QCD1000C SYSTEM "ntuplewriter_ttbsm_53_plusprunedcfg_Summer12_DR53X_QCD_HT-1000ToInf_TuneZ2star_8TeV-madgraph-pythia6_AODSIM_PU_S10_START53_V7A-v1_C.xml">
+<!ENTITY QCD1000AA SYSTEM "ntuplewriter_ttbsm_53_plusprunedcfg_Summer12_DR53X_QCD_HT-1000ToInf_TuneZ2star_8TeV-madgraph-pythia6_AODSIM_PU_S10_START53_V7A-v1_AA.xml">
+<!ENTITY QCD1000BB SYSTEM "ntuplewriter_ttbsm_53_plusprunedcfg_Summer12_DR53X_QCD_HT-1000ToInf_TuneZ2star_8TeV-madgraph-pythia6_AODSIM_PU_S10_START53_V7A-v1_BB.xml">
+<!ENTITY QCD1000CC SYSTEM "ntuplewriter_ttbsm_53_plusprunedcfg_Summer12_DR53X_QCD_HT-1000ToInf_TuneZ2star_8TeV-madgraph-pythia6_AODSIM_PU_S10_START53_V7A-v1_CC.xml">
 
 <!--
-<!ENTITY TPTHTH1000 SYSTEM "ntuplewriter_ttbsm_53_plusprunedcfg_HTTcorr_CA8_Summer12_DR53X_TprimeTprimeToTHTHinc_M-1000_TuneZ2star_8TeV-madgraph_AODSIM_PU_S10_START53_V7C-v1.xml">
+<!ENTITY TPTHTH1000 SYSTEM "ntuplewriter_ttbsm_53_plusprunedcfg_HTTcorr_Summer12_DR53X_TprimeTprimeToTHTHinc_M-1000_TuneZ2star_8TeV-madgraph_AODSIM_PU_S10_START53_V7C-v1.xml">
 -->
 
 
-<!ENTITY TPTHTH1000 SYSTEM "ntuplewriter_ttbsm_53_plusprunedcfg_CA8_Summer12_DR53X_TprimeTprimeToTHTHinc_M-1000_TuneZ2star_8TeV-madgraph_AODSIM_PU_S10_START53_V7C-v1.xml">
-<!ENTITY TPTHTH900 SYSTEM "ntuplewriter_ttbsm_53_plusprunedcfg_CA8_Summer12_DR53X_TprimeTprimeToTHTHinc_M-900_TuneZ2star_8TeV-madgraph_AODSIM_PU_S10_START53_V7C-v1.xml">
-<!ENTITY TPTHTH800 SYSTEM "ntuplewriter_ttbsm_53_plusprunedcfg_CA8_Summer12_DR53X_TprimeTprimeToTHTHinc_M-800_TuneZ2star_8TeV-madgraph_AODSIM_PU_S10_START53_V7C-v1.xml">
-<!ENTITY TPTHTH700 SYSTEM "ntuplewriter_ttbsm_53_plusprunedcfg_CA8_Summer12_DR53X_TprimeTprimeToTHTHinc_M-700_TuneZ2star_8TeV-madgraph_AODSIM_PU_S10_START53_V7C-v1.xml">
-<!ENTITY TPTHTH600 SYSTEM "ntuplewriter_ttbsm_53_plusprunedcfg_CA8_Summer12_DR53X_TprimeTprimeToTHTHinc_M-600_TuneZ2star_8TeV-madgraph_AODSIM_PU_S10_START53_V7C-v1.xml">
-<!ENTITY TPTHTH500 SYSTEM "ntuplewriter_ttbsm_53_plusprunedcfg_CA8_Summer12_DR53X_TprimeTprimeToTHTHinc_M-500_TuneZ2star_8TeV-madgraph_AODSIM_PU_S10_START53_V7C-v1.xml">
+<!ENTITY TPTHTH1000 SYSTEM "ntuplewriter_ttbsm_53_plusprunedcfg_Summer12_DR53X_TprimeTprimeToTHTHinc_M-1000_TuneZ2star_8TeV-madgraph_AODSIM_PU_S10_START53_V7C-v1.xml">
+<!ENTITY TPTHTH900 SYSTEM "ntuplewriter_ttbsm_53_plusprunedcfg_Summer12_DR53X_TprimeTprimeToTHTHinc_M-900_TuneZ2star_8TeV-madgraph_AODSIM_PU_S10_START53_V7C-v1.xml">
+<!ENTITY TPTHTH800 SYSTEM "ntuplewriter_ttbsm_53_plusprunedcfg_Summer12_DR53X_TprimeTprimeToTHTHinc_M-800_TuneZ2star_8TeV-madgraph_AODSIM_PU_S10_START53_V7C-v1.xml">
+<!ENTITY TPTHTH700 SYSTEM "ntuplewriter_ttbsm_53_plusprunedcfg_Summer12_DR53X_TprimeTprimeToTHTHinc_M-700_TuneZ2star_8TeV-madgraph_AODSIM_PU_S10_START53_V7C-v1.xml">
+<!ENTITY TPTHTH600 SYSTEM "ntuplewriter_ttbsm_53_plusprunedcfg_Summer12_DR53X_TprimeTprimeToTHTHinc_M-600_TuneZ2star_8TeV-madgraph_AODSIM_PU_S10_START53_V7C-v1.xml">
+<!ENTITY TPTHTH500 SYSTEM "ntuplewriter_ttbsm_53_plusprunedcfg_Summer12_DR53X_TprimeTprimeToTHTHinc_M-500_TuneZ2star_8TeV-madgraph_AODSIM_PU_S10_START53_V7C-v1.xml">
 
 <!--
 <!ENTITY TPTHTH900Inc SYSTEM "ttbsm_53x_v2_cfg_mc_fly_Summer12_DR53X_TprimeTprimeToTHTHinc_M-900_TuneZ2star_8TeV-madgraph_AODSIM_PU_S10_START53_V7C-v1.xml">
@@ -96,7 +99,7 @@
 
 
 
-	<Cycle Name="TPrimePreselectionCycle" RunMode="PROOF" ProofServer="lite://"  ProofWorkDir="" OutputDirectory="../../Output/TPrimePreselection_CA8Pruned/" PostFix="" TargetLumi="19708.0">
+	<Cycle Name="TPrimePreselectionCycle" RunMode="PROOF" ProofServer="lite://"  ProofWorkDir="" OutputDirectory="../../Output/TPrimePreselection_CA15Filtered/" PostFix="" TargetLumi="19708.0">
 	
 	
 	
@@ -142,7 +145,7 @@
 <InputTree Name="AnalysisTree" />
 <OutputTree Name="AnalysisTree" />
                 </InputData>
--->
+
 
 <InputData Lumi="3601.48670781" NEventsMax="-1" Type="MC" Version="QCD500to1000" Cacheable="True"> 
 &QCD500to1000;
@@ -168,7 +171,24 @@
 <OutputTree Name="AnalysisTree" />
                 </InputData>
 
-<!--
+
+<InputData Lumi="66508.4166667" NEventsMax="-1" Type="MC" Version="QCD1000AA" Cacheable="True"> 
+&QCD1000AA;
+<InputTree Name="AnalysisTree" />
+<OutputTree Name="AnalysisTree" />
+                </InputData>
+
+<InputData Lumi="66508.4166667" NEventsMax="-1" Type="MC" Version="QCD1000BB" Cacheable="True"> 
+&QCD1000BB;
+<InputTree Name="AnalysisTree" />
+<OutputTree Name="AnalysisTree" />
+                </InputData>
+
+<InputData Lumi="66508.4166667" NEventsMax="-1" Type="MC" Version="QCD1000CC" Cacheable="True"> 
+&QCD1000CC;
+<InputTree Name="AnalysisTree" />
+<OutputTree Name="AnalysisTree" />
+                </InputData>
 
  <InputData Lumi="231964.558473" NEventsMax="-1" Type="MC" Version="TTbarSemiLep" Cacheable="True">
 &TTbarSemiLep;
@@ -187,6 +207,8 @@
 -->
 
 
+
+
 <InputData Lumi="24377083.3333" NEventsMax="-1" Type="MC" Version="TPTHTH1000" Cacheable="True"> 
 &TPTHTH1000;
 <InputTree Name="AnalysisTree" />
@@ -195,42 +217,42 @@
 
 
 
-<InputData Lumi="11463888.8889" NEventsMax="-1" Type="MC" Version="TPTHTH900" Cacheable="True"> 
+<InputData Lumi="11463888.8889" NEventsMax="-1" Type="MC" Version="TPTHTH900" Cacheable="False"> 
 &TPTHTH900;
 <InputTree Name="AnalysisTree" />
 <OutputTree Name="AnalysisTree" />
         </InputData> 
 
-<InputData Lumi="2829577.46479" NEventsMax="-1" Type="MC" Version="TPTHTH800" Cacheable="True"> 
+<InputData Lumi="2829577.46479" NEventsMax="-1" Type="MC" Version="TPTHTH800" Cacheable="False"> 
 &TPTHTH800;
 <InputTree Name="AnalysisTree" />
 <OutputTree Name="AnalysisTree" />
         </InputData> 
 
 
-<InputData Lumi="1156376.06838" NEventsMax="-1" Type="MC" Version="TPTHTH700" Cacheable="True"> 
+<InputData Lumi="1156376.06838" NEventsMax="-1" Type="MC" Version="TPTHTH700" Cacheable="False"> 
 &TPTHTH700;
 <InputTree Name="AnalysisTree" />
 <OutputTree Name="AnalysisTree" />
         </InputData> 
 
 
-<InputData Lumi="550913.793103" NEventsMax="-1" Type="MC" Version="TPTHTH600" Cacheable="True"> 
+<InputData Lumi="550913.793103" NEventsMax="-1" Type="MC" Version="TPTHTH600" Cacheable="False"> 
 &TPTHTH600;
 <InputTree Name="AnalysisTree" />
 <OutputTree Name="AnalysisTree" />
         </InputData> 
 
 
- <InputData Lumi="165983.050847" NEventsMax="-1" Type="MC" Version="TPTHTH500" Cacheable="True">
+ <InputData Lumi="165983.050847" NEventsMax="-1" Type="MC" Version="TPTHTH500" Cacheable="False">
 &TPTHTH500;
 <InputTree Name="AnalysisTree" />
 <OutputTree Name="AnalysisTree" />
         </InputData> 
 
 
-
 <!--
+
 
 
 <InputData Lumi="29809451.2195" NEventsMax="-1" Type="MC" Version="TPBWBW1000Inc" Cacheable="True"> 
@@ -465,7 +487,7 @@
 		      <Item Name="METName" Value="patMETsPFlow" /> 
 		      <!-- For Hep Tagger:-->
 		      <Item Name="TopTagJetCollection" Value="goodPatJetsCAHEPTopTagPFPacked" />
-		      <Item Name="TopJetCollection" Value="goodPatJetsCA8PrunedPFPacked"/> 
+		      <Item Name="TopJetCollection" Value="goodPatJetsCA15FilteredPFPacked"/> 
 		      <!--Item Name="TopJetCollection" Value="goodPatJetsCAHEPTopTagPFPacked" /--> 
 		       <!--Item Name="TopJetCollection" Value="goodPatJetsCA15MassDropFilteredPF"/-->
 
@@ -497,8 +519,8 @@
 		      <Item Name="JECTopTagJetCollection" Value="AK7PFchs" />
 		     
 		     
-		     <Item Name="BTagEffi_Filename_MC" Value="/scratch/hh/dust/naf/cms/user/hoeing/newSFrame/CMSSW_5_2_5/src/SFrame/Output/btageffhistsAfterTopTag/cutflowCycle"/>
-		     <Item Name="BTaggingMode" Value="mean" />
+		  <!--   <Item Name="BTagEffi_Filename_MC" Value="/scratch/hh/dust/naf/cms/user/hoeing/newSFrame/CMSSW_5_2_5/src/SFrame/Output/btageffhistsAfterTopTag/cutflowCycle"/>
+		     <Item Name="BTaggingMode" Value="mean" />-->
                 </UserConfig>
 	</Cycle>
 </JobConfiguration>

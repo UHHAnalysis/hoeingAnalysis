@@ -46,8 +46,8 @@ private:
   //
   // Put all your private variables here
   //
-  // std::string m_BTagEffiFilenameMC;
-//   std::string m_BTaggingMode;
+   std::string m_BTagEffiFilenameMC;
+   std::string m_BTaggingMode;
 //   BTaggingRoutine* m_bsf;
   
   // Macro adding the functions for dictionary generation
