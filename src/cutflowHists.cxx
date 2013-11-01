@@ -202,11 +202,11 @@ weight=weight*HiggsBRweight();
   //find top and higgs candidate used in the selection
   for(unsigned int i=0; i< bcc->topjets->size(); ++i){
     TopJet topjet =  bcc->topjets->at(i);
-    if(HepTopTagWithMatch(topjet) && subJetBTagTop(topjet, e_CSVM)>=1){
+    if(HepTopTagWithMatch(topjet) && subJetBTagTop(topjet, e_CSVM, m_BTaggingMode, m_BTagEffiFilenameMC)>=1){
       nheptoptag++;
       topTaggedJets.push_back(i);
     }
-    if (HiggsTag(topjet, e_CSVM, e_CSVM)){
+    if (HiggsTag(topjet, e_CSVM, e_CSVM, m_BTaggingMode, m_BTagEffiFilenameMC)){
       nhiggstag++;
       HiggsTaggedJets.push_back(i);
     }
@@ -241,9 +241,9 @@ weight=weight*HiggsBRweight();
 	indexTopCandidate = topTaggedJets[0];
 	indexHiggsCandidate = HiggsTaggedJets[1];
       }
-      if(HiggsTaggedJets.size()==1){
+      if(topTaggedJets.size()>1){
 	indexTopCandidate = topTaggedJets[1];
-	indexHiggsCandidate = HiggsTaggedJets[1];
+	indexHiggsCandidate = HiggsTaggedJets[0];
       }     
     }
   }
@@ -290,9 +290,9 @@ weight=weight*HiggsBRweight();
       Hist("WMassAfterTag") -> Fill(WMassHEP, weight);
       if( nTopTags == 1 && indexTopJet1 == -99) indexTopJet1 = i;
       if( nTopTags == 2 && indexTopJet2 == -99) indexTopJet2 = i;
-      nSubTagsL = subJetBTagTop(myJet, e_CSVL);
-      nSubTagsM = subJetBTagTop(myJet, e_CSVM);
-      nSubTagsT = subJetBTagTop(myJet, e_CSVT);
+      nSubTagsL = subJetBTagTop(myJet, e_CSVL,m_BTaggingMode, m_BTagEffiFilenameMC);
+      nSubTagsM = subJetBTagTop(myJet, e_CSVM,m_BTaggingMode, m_BTagEffiFilenameMC);
+      nSubTagsT = subJetBTagTop(myJet, e_CSVT,m_BTaggingMode, m_BTagEffiFilenameMC);
       
       Hist("nSubJetBTagsL") -> Fill(nSubTagsL, weight);//how many loose wp subjet b-tags do we have on a top tagged jet (any top tagged jet)
       Hist("nSubJetBTagsM") -> Fill(nSubTagsM, weight);
@@ -305,11 +305,11 @@ weight=weight*HiggsBRweight();
     }
 
     if(i != indexTopCandidate){
-      if (HiggsTag(myJet, e_CSVL, e_CSVL)) countHiggsTagLL++;  
-      if (HiggsTag(myJet, e_CSVL, e_CSVM)) countHiggsTagLM++; 
-      if (HiggsTag(myJet, e_CSVM, e_CSVM)) countHiggsTagMM++;
-      if (HiggsTag(myJet, e_CSVM, e_CSVT)) countHiggsTagMT++; 
-      if (HiggsTag(myJet, e_CSVT, e_CSVT)) countHiggsTagTT++;
+      if (HiggsTag(myJet, e_CSVL, e_CSVL,m_BTaggingMode, m_BTagEffiFilenameMC)) countHiggsTagLL++;  
+      if (HiggsTag(myJet, e_CSVL, e_CSVM,m_BTaggingMode, m_BTagEffiFilenameMC)) countHiggsTagLM++; 
+      if (HiggsTag(myJet, e_CSVM, e_CSVM,m_BTaggingMode, m_BTagEffiFilenameMC)) countHiggsTagMM++;
+      if (HiggsTag(myJet, e_CSVM, e_CSVT,m_BTaggingMode, m_BTagEffiFilenameMC)) countHiggsTagMT++; 
+      if (HiggsTag(myJet, e_CSVT, e_CSVT,m_BTaggingMode, m_BTagEffiFilenameMC)) countHiggsTagTT++;
       if (countHiggsTagLL == 1 && indexHiggs1 == -99) indexHiggs1 = i;
       if (countHiggsTagLL == 2 && indexHiggs2 == -99) indexHiggs2 = i;     
     }
