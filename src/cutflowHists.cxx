@@ -12,23 +12,16 @@ using namespace std;
 
 
 // cutflowHists::cutflowHists(const char* name) : BaseHists(name){
-//   // named default constructor
- 
-//   topJetConeSize = 1.5;
-//   runWith4Jets = true;
-
- 
+//   // named default constructor 
 // }
 
 
 cutflowHists::cutflowHists(const char* name, TString mode,TString filename) : BaseHists(name){
-  // named default constructor
- 
+  // named default constructor 
   topJetConeSize = 1.5;
   runWith4Jets = true;
   m_BTaggingMode = mode;
   m_BTagEffiFilenameMC=filename;
- 
 }
 
 
@@ -39,12 +32,6 @@ cutflowHists::~cutflowHists(){
 
 void cutflowHists::Init()
 {
-  
-  
- 
-
-  Book( TH1F( "effNominator", "p#_{T}(Jet) (GeV)", 100, 0, 2000));
-  Book( TH1F( "effNumerator", "p#_{T}(Jet) (GeV)", 100, 0, 2000));
   Book( TH1F( "numberEvents", "", 1, 0, 1));
   Book( TH1F( "nTopJets", "n jets", 10, 0, 10));
   Book( TH1F( "nJets", "n jets", 20, 0, 20));
@@ -60,41 +47,60 @@ void cutflowHists::Init()
   Book( TH1F( "nHiggsTagsMM", "n Higgs-tags", 10, 0, 10));
   Book( TH1F( "nHiggsTagsMT", "n Higgs-tags", 10, 0, 10));
   Book( TH1F( "nHiggsTagsTT", "n Higgs-tags", 10, 0, 10));
+  
   Book( TH1F( "HTJets", "HT (GeV)", 50, 0, 3000));
+  Book( TH1F( "HTJetsLept", "HT (GeV)", 50, 0, 3000));
+  Book( TH1F( "HTSubJets", "HT (GeV)", 50, 0, 3000));
+  
+  Book( TH1F( "HTJetsSingleHiggsTagBin", "HT (GeV)", 50, 0, 3000));
+  Book( TH1F( "HTJetsLeptSingleHiggsTagBin", "HT (GeV)", 50, 0, 3000));
+  Book( TH1F( "HTSubJetsSingleHiggsTagBin", "HT (GeV)", 50, 0, 3000));
+ 
+  Book( TH1F( "HTJetsMultiHiggsTagBin", "HT (GeV)", 50, 0, 3000));
+  Book( TH1F( "HTJetsLeptMultiHiggsTagBin", "HT (GeV)", 50, 0, 3000));
+  Book( TH1F( "HTSubJetsMultiHiggsTagBin", "HT (GeV)", 50, 0, 3000));
+
+  Book( TH1F( "HTJetsSingleTopTagBin", "HT (GeV)", 50, 0, 3000));
+  Book( TH1F( "HTJetsLeptSingleTopTagBin", "HT (GeV)", 50, 0, 3000));
+  Book( TH1F( "HTSubJetsSingleTopTagBin", "HT (GeV)", 50, 0, 3000));
+
+  Book( TH1F( "HTJetsMultiTopTagBin", "HT (GeV)", 50, 0, 3000));
+  Book( TH1F( "HTJetsLeptMultiTopTagBin", "HT (GeV)", 50, 0, 3000));
+  Book( TH1F( "HTSubJetsMultiTopTagBin", "HT (GeV)", 50, 0, 3000));
+
+
+  Book( TH1F( "HTJetsSingleHiggsSingleTopTagBin", "HT (GeV)", 50, 0, 3000));
+  Book( TH1F( "HTJetsLeptSingleHiggsSingleTopTagBin", "HT (GeV)", 50, 0, 3000));
+  Book( TH1F( "HTSubJetsSingleHiggsSingleTopTagBin", "HT (GeV)", 50, 0, 3000));
+
+  Book( TH1F( "HTJetsSingleHiggsMultiTopTagBin", "HT (GeV)", 50, 0, 3000));
+  Book( TH1F( "HTJetsLeptSingleHiggsMultiTopTagBin", "HT (GeV)", 50, 0, 3000));
+  Book( TH1F( "HTSubJetsSingleHiggsMultiTopTagBin", "HT (GeV)", 50, 0, 3000));
+ 
+ 
+  Book( TH1F( "HTJetsMultiHiggsSingleTopTagBin", "HT (GeV)", 50, 0, 3000));
+  Book( TH1F( "HTJetsLeptMultiHiggsSingleTopTagBin", "HT (GeV)", 50, 0, 3000));
+  Book( TH1F( "HTSubJetsMultiHiggsSingleTopTagBin", "HT (GeV)", 50, 0, 3000));
+
+  Book( TH1F( "HTJetsMultiHiggsMultiTopTagBin", "HT (GeV)", 50, 0, 3000));
+  Book( TH1F( "HTJetsLeptMultiHiggsMultiTopTagBin", "HT (GeV)", 50, 0, 3000));
+  Book( TH1F( "HTSubJetsMultiHiggsMultiTopTagBin", "HT (GeV)", 50, 0, 3000));
+
   Book( TH1F( "HTJetsHighPt", "HT (GeV)", 50, 0, 3000));
   Book( TH1F( "HTTopJets", "HT (GeV)", 50, 0, 3000));
-  Book( TH1F( "ptJet1", "#p_{T}(Jet1) (GeV)", 50, 0, 2000));
-  Book( TH1F( "ptJet2", "#p_{T}(Jet2) (GeV)", 50, 0, 2000));
-  Book( TH1F( "ptJet3", "#p_{T}(Jet3) (GeV)", 50, 0, 2000));
-  Book( TH1F( "ptJet4", "#p_{T}(Jet4) (GeV)", 50, 0, 2000)); 
-  Book( TH1F( "InvMass11", "", 50, 0, 2000));
-  Book( TH1F( "InvMass21", "", 50, 0, 2000));
-  Book( TH1F( "InvMass22", "", 50, 0, 2000));
-  Book( TH1F( "InvMassAll", "", 50, 0, 2000));
-  Book( TH1F( "InvMassBackToBack", "", 50, 0, 2000));
-  Book( TH1F( "bestInvMass1TP1000", "", 50, 0, 2000));
-  Book( TH1F( "bestInvMass2TP1000", "", 50, 0, 2000));
-  Book( TH1F( "bestInvMass1TP700", "", 50, 0, 2000));
-  Book( TH1F( "bestInvMass2TP700", "", 50, 0, 2000));
-  Book( TH1F( "bestInvMass1TP500", "", 50, 0, 2000));
-  Book( TH1F( "bestInvMass2TP500", "", 50, 0, 2000));
-  Book( TH1F( "test", "", 10, 0, 10));
-  Book( TH1F( "deltaRDaughters", "", 100, 0, 10));
-  Book( TH1F( "deltaPhiDaughters", "", 20, 0, 3.5));
-  Book( TH1F( "deltaPhiMothers", "", 20, 0, 3.5));
-  Book( TH1F( "NPrimaryVertices", "n prim. vertices", 20, 0, 40));
-  Book( TH1F( "topCandidatePt", "#p_{T} of top candidate (GeV)", 50, 0, 2000));
-  Book( TH1F( "HiggsCandidatePt", "#p_{T} of Higgs candidate (GeV)", 50, 0, 2000));
-  Book( TH1F( "topCandidateMass", "mass of top candidate (GeV)", 25, 0, 300));
   Book( TH1F( "HiggsCandidateMass", "mass of Higgs candidate (GeV)", 25, 0, 300));
   Book( TH1F( "HiggsCandidateMassFromSubjets", "mass of Higgs candidate (GeV)", 25, 0, 300));
   Book( TH1F( "HiggsCandidateMassFromBTaggedSubjets", "mass of Higgs candidate (GeV)", 25, 0, 300));
-  Book( TH1F( "pairwiseMassCriterium1AllJets", "atan(m13/m12)", 20, -2, 2));
-  Book( TH1F( "pairwiseMassCriterium2AllJets", "m23/mjet", 50, 0, 1));
-  Book( TH1F( "pairwiseMassCriterium1AfterTag", "atan(m13/m12)", 20, -2, 2));
-  Book( TH1F( "pairwiseMassCriterium2AfterTag", "m23/mjet", 50, 0, 1));
-  Book( TH1F( "WMass", "m_{W} (GeV)", 50, 0, 150));
-  Book( TH1F( "WMassAfterTag", "m_{W} (GeV)", 50, 0, 150));
+
+  Book( TH1F( "HiggsCandidateMassFromBTaggedSubjetsSingleHiggsTagBin", "mass of Higgs candidate (GeV)", 25, 0, 300));
+  Book( TH1F( "HiggsCandidateMassFromBTaggedSubjetsMultiHiggsTagBin", "mass of Higgs candidate (GeV)", 25, 0, 300));
+  Book( TH1F( "HiggsCandidateMassFromBTaggedSubjetsSingleTopTagBin", "mass of Higgs candidate (GeV)", 25, 0, 300));
+  Book( TH1F( "HiggsCandidateMassFromBTaggedSubjetsMultiTopTagBin", "mass of Higgs candidate (GeV)", 25, 0, 300));
+  Book( TH1F( "HiggsCandidateMassFromBTaggedSubjetsSingleHiggsSingleTopTagBin", "mass of Higgs candidate (GeV)", 25, 0, 300));
+  Book( TH1F( "HiggsCandidateMassFromBTaggedSubjetsSingleHiggsMultiTopTagBin", "mass of Higgs candidate (GeV)", 25, 0, 300));
+  Book( TH1F( "HiggsCandidateMassFromBTaggedSubjetsMultiHiggsSingleTopTagBin", "mass of Higgs candidate (GeV)", 25, 0, 300));
+  Book( TH1F( "HiggsCandidateMassFromBTaggedSubjetsMultiHiggsMultiTopTagBin", "mass of Higgs candidate (GeV)", 25, 0, 300));
+
   Book( TH1F( "InvMassCandidates", "m_{reco}(T') (GeV)", 50, 0, 2000));
 
 }
@@ -108,7 +114,6 @@ void cutflowHists::Fill()
   double ptcut=150;
   //for jet collection
   double ptcutjets=10;
-
   EventCalc* calc = EventCalc::Instance();
   bool IsRealData = calc->IsRealData();
   LuminosityHandler* lumih = calc->GetLumiHandler();
@@ -117,10 +122,9 @@ void cutflowHists::Fill()
 
   //bool IsRealData = calc->IsRealData();
 
-if(!IsRealData){
-weight=weight*HiggsBRweight();
-}
-
+  if(!IsRealData){
+    weight=weight*HiggsBRweight();
+  }
 
   int run = calc->GetRunNum();
   int lumiblock = calc->GetLumiBlock();
@@ -135,40 +139,29 @@ weight=weight*HiggsBRweight();
  
   if (IsRealData == false)TTbarGen* Decay = calc->GetTTbarGen();
 
-  Hist("NPrimaryVertices")-> Fill(Npvs, weight);
-
-  Hist("test") -> Fill(0., weight);
- 
-  if (bcc->topjets->size() > 0.){
-    Hist("effNominator") -> Fill( bcc->topjets->at(0).pt(), weight);
-    Hist("effNumerator") -> Fill( bcc->topjets->at(0).pt(), weight);  
-  }
-
+  // Hist("NPrimaryVertices")-> Fill(Npvs, weight);
   Hist("numberEvents") -> Fill(.5, weight);
   Hist("nJets") -> Fill(Njets, weight);
   int Ntopjets=0;
 
-  for (unsigned int itj=0;itj<bcc->topjets->size();itj++){
-    if(bcc->topjets->at(itj).pt()<ptcut) continue;
-    Ntopjets=Ntopjets+1;
-    if(Ntopjets==1){
-      Hist("ptJet1") -> Fill( bcc->topjets->at(itj).pt(), weight);
-    }
-
-    if(Ntopjets==2){
-      Hist("ptJet2") -> Fill( bcc->topjets->at(itj).pt(), weight);
-    }
-    if(Ntopjets==3){
-      Hist("ptJet3") -> Fill( bcc->topjets->at(itj).pt(), weight);
-    }
-    if(Ntopjets==4){
-      Hist("ptJet4") -> Fill( bcc->topjets->at(itj).pt(), weight);
-    }
-    if(Ntopjets>4) break;
-  }
-    
-
-
+ //  for (unsigned int itj=0;itj<bcc->topjets->size();itj++){
+//     if(bcc->topjets->at(itj).pt()<ptcut) continue;
+//     Ntopjets=Ntopjets+1;
+//     //  Hist("ptJets") -> Fill( bcc->topjets->at(itj).pt(), weight);
+//     if(Ntopjets==1){
+//       Hist("ptJet1") -> Fill( bcc->topjets->at(itj).pt(), weight);
+//     }
+//     if(Ntopjets==2){
+//       Hist("ptJet2") -> Fill( bcc->topjets->at(itj).pt(), weight);
+//     }
+//     if(Ntopjets==3){
+//       Hist("ptJet3") -> Fill( bcc->topjets->at(itj).pt(), weight);
+//     }
+//     if(Ntopjets==4){
+//       Hist("ptJet4") -> Fill( bcc->topjets->at(itj).pt(), weight);
+//     }
+//     if(Ntopjets>4) break;
+//   }
   Hist("nTopJets") -> Fill(Ntopjets, weight);
 
   int nTopTags = 0;
@@ -189,48 +182,47 @@ weight=weight*HiggsBRweight();
   int countHiggsTagMM = 0;
   int countHiggsTagMT = 0;
   int countHiggsTagTT = 0;
-
-
   int finallySelected = 1;
   int indexTopCandidate = -99;
   int indexHiggsCandidate = -99;
   int nheptoptag=0;
   int nhiggstag=0;
+ int nhiggstagWithCut=0;
   std::vector<int> topTaggedJets;
   std::vector<int> HiggsTaggedJets;
 
   //find top and higgs candidate used in the selection
   for(unsigned int i=0; i< bcc->topjets->size(); ++i){
     TopJet topjet =  bcc->topjets->at(i);
+
     if(HepTopTagWithMatch(topjet) && subJetBTagTop(topjet, e_CSVM, m_BTaggingMode, m_BTagEffiFilenameMC)>=1){
       nheptoptag++;
       topTaggedJets.push_back(i);
     }
     if (HiggsTag(topjet, e_CSVM, e_CSVM, m_BTaggingMode, m_BTagEffiFilenameMC)){
       nhiggstag++;
-      HiggsTaggedJets.push_back(i);
+      if (HiggsMassFromBTaggedSubjets(topjet, e_CSVM, m_BTaggingMode, m_BTagEffiFilenameMC)>60.){
+	nhiggstagWithCut ++;
+	HiggsTaggedJets.push_back(i);
+      }
     }
   }
-
   if (nheptoptag == 0){
     finallySelected = 0;
-    if (nhiggstag != 0){
+    if (nhiggstagWithCut != 0){
       indexHiggsCandidate = HiggsTaggedJets[0];
     }
   }
-  if (nhiggstag == 0){
+  if (nhiggstagWithCut == 0){
     finallySelected = 0; 
     if(nheptoptag != 0){
       indexTopCandidate = topTaggedJets[0];
     }
   }
-
-
-  if(nheptoptag == 1 && nhiggstag == 1 && topTaggedJets[0] == HiggsTaggedJets[0]){
+  if(nheptoptag == 1 && nhiggstagWithCut == 1 && topTaggedJets[0] == HiggsTaggedJets[0]){
     finallySelected = 0;
     indexTopCandidate = topTaggedJets[0];
-  }
- 
+  } 
   if (finallySelected == 1){
     if (topTaggedJets[0] != HiggsTaggedJets[0]){
       indexTopCandidate = topTaggedJets[0];
@@ -250,50 +242,60 @@ weight=weight*HiggsBRweight();
 
 
   double HTJets = 0.;
+  double HTJetsLept = 0.;
+  double HTSubJets = 0.;
+  std::vector<Particle> subjets_top;
   double HTJetsHighPt = 0.;
   double pairwiseMassCrit1 = -99;
   double pairwiseMassCrit2 = -99;
   double WMassHEP = -99;
+
   for (unsigned int itj=0;itj<bcc->jets->size();itj++){
     if(bcc->jets->at(itj).pt()<ptcutjets) continue;
     HTJets += jets->at(itj).pt();
   }
-  Hist("HTJets")-> Fill(HTJets, weight);
+
+  HTJetsLept = calc->GetHT();
+ 
+
+ for (unsigned int itj = 0; itj < bcc->topjets->size(); itj++){
+    TopJet topjet = bcc->topjets->at(itj);
+    subjets_top=topjet.subjets();
+    for (unsigned int subj = 0; subj < subjets_top.size(); subj++){
+      HTSubJets += subjets_top.at(subj).pt();
+    }
+  }
+  
+  
   int HTTopJets = 0.;
+
   for(int i =0; i<bcc->topjets->size(); i++ ){
-     TopJet myJet = bcc->topjets->at(i);
+    TopJet myJet = bcc->topjets->at(i);
     HTTopJets += myJet.pt();
-     pairwiseMassCrit1 = HepTopTagPairwiseMassWithMatch1(myJet);
-     pairwiseMassCrit2 = HepTopTagPairwiseMassWithMatch2(myJet);
-     WMassHEP = WMassWithMatch(myJet);
-    Hist("pairwiseMassCriterium1AllJets") -> Fill(pairwiseMassCrit1, weight);
-    Hist("pairwiseMassCriterium2AllJets") -> Fill(pairwiseMassCrit2, weight);
-    Hist("WMass")-> Fill(WMassHEP, weight);
-
+    pairwiseMassCrit1 = HepTopTagPairwiseMassWithMatch1(myJet);
+    pairwiseMassCrit2 = HepTopTagPairwiseMassWithMatch2(myJet);
+    WMassHEP = WMassWithMatch(myJet);
+   //  Hist("pairwiseMassCriterium1AllJets") -> Fill(pairwiseMassCrit1, weight);
+   // Hist("pairwiseMassCriterium2AllJets") -> Fill(pairwiseMassCrit2, weight);
+    //Hist("WMass")-> Fill(WMassHEP, weight);   
+ 
+  //   if (i == indexTopCandidate){
+//       Hist("topCandidatePt") -> Fill(HepTopTagMatchPt(myJet), weight);
+//       Hist("topCandidateMass") -> Fill(HepTopTagMatchMass(myJet), weight);
+//     }
     
-    if (i == indexTopCandidate){
-	Hist("topCandidatePt") -> Fill(HepTopTagMatchPt(myJet), weight);
-       	Hist("topCandidateMass") -> Fill(HepTopTagMatchMass(myJet), weight);
-      }
+     if (HepTopTagWithMatch(myJet)){
+//       nTopTags+= 1;
+//       Hist("pairwiseMassCriterium1AfterTag") -> Fill(pairwiseMassCrit1, weight);
+//       Hist("pairwiseMassCriterium2AfterTag") -> Fill(pairwiseMassCrit2, weight);
+//       Hist("WMassAfterTag") -> Fill(WMassHEP, weight);
 
-      if (i == indexHiggsCandidate){
-	  Hist("HiggsCandidatePt") -> Fill(myJet.pt(), weight);
-	  Hist("HiggsCandidateMass") -> Fill(myJet.v4().M(), weight);
-	  Hist("HiggsCandidateMassFromSubjets") -> Fill( HiggsMassFromSubjets(myJet),weight);
-	  Hist("HiggsCandidateMassFromBTaggedSubjets") -> Fill( HiggsMassFromBTaggedSubjets(myJet),weight);
-      }    
-
-    if (HepTopTagWithMatch(myJet)){
-      nTopTags+= 1;
-      Hist("pairwiseMassCriterium1AfterTag") -> Fill(pairwiseMassCrit1, weight);
-      Hist("pairwiseMassCriterium2AfterTag") -> Fill(pairwiseMassCrit2, weight);
-      Hist("WMassAfterTag") -> Fill(WMassHEP, weight);
       if( nTopTags == 1 && indexTopJet1 == -99) indexTopJet1 = i;
       if( nTopTags == 2 && indexTopJet2 == -99) indexTopJet2 = i;
+
       nSubTagsL = subJetBTagTop(myJet, e_CSVL,m_BTaggingMode, m_BTagEffiFilenameMC);
       nSubTagsM = subJetBTagTop(myJet, e_CSVM,m_BTaggingMode, m_BTagEffiFilenameMC);
-      nSubTagsT = subJetBTagTop(myJet, e_CSVT,m_BTaggingMode, m_BTagEffiFilenameMC);
-      
+      nSubTagsT = subJetBTagTop(myJet, e_CSVT,m_BTaggingMode, m_BTagEffiFilenameMC);      
       Hist("nSubJetBTagsL") -> Fill(nSubTagsL, weight);//how many loose wp subjet b-tags do we have on a top tagged jet (any top tagged jet)
       Hist("nSubJetBTagsM") -> Fill(nSubTagsM, weight);
       Hist("nSubJetBTagsT") -> Fill(nSubTagsT, weight);
@@ -327,16 +329,80 @@ weight=weight*HiggsBRweight();
   Hist("nHiggsTagsMM") -> Fill(countHiggsTagMM, weight);
   Hist("nHiggsTagsMT") -> Fill(countHiggsTagMT, weight);
   Hist("nHiggsTagsTT") -> Fill(countHiggsTagTT, weight);
+  TopJet higgsCandidateJet;
+  if (indexHiggsCandidate != -99){
+
+    higgsCandidateJet = bcc->topjets->at(indexHiggsCandidate);
+    // Hist("HiggsCandidatePt") -> Fill(higgsCandidateJet.pt(), weight);
+    Hist("HiggsCandidateMass") -> Fill(higgsCandidateJet.v4().M(), weight);
+    Hist("HiggsCandidateMassFromSubjets") -> Fill( HiggsMassFromSubjets(higgsCandidateJet),weight);
+    Hist("HiggsCandidateMassFromBTaggedSubjets") -> Fill( HiggsMassFromBTaggedSubjets(higgsCandidateJet, e_CSVM, m_BTaggingMode, m_BTagEffiFilenameMC),weight);
+  }
+
+  Hist("HTJets")-> Fill(HTJets, weight);
+  Hist("HTJetsLept")-> Fill(HTJetsLept, weight);
+  Hist("HTSubJets")-> Fill(HTSubJets, weight);
+
+  if (nhiggstag == 1){
+    Hist("HTJetsSingleHiggsTagBin")-> Fill(HTJets, weight);
+    Hist("HTJetsLeptSingleHiggsTagBin")-> Fill(HTJetsLept, weight);
+    Hist("HTSubJetsSingleHiggsTagBin")-> Fill(HTSubJets, weight);
+    if (indexHiggsCandidate != -99) Hist("HiggsCandidateMassFromBTaggedSubjetsSingleHiggsTagBin") -> Fill( HiggsMassFromBTaggedSubjets(higgsCandidateJet, e_CSVM, m_BTaggingMode, m_BTagEffiFilenameMC),weight);
+    if (nheptoptag == 1){
+      Hist("HTJetsSingleHiggsSingleTopTagBin")-> Fill(HTJets, weight);
+      Hist("HTJetsLeptSingleHiggsSingleTopTagBin")-> Fill(HTJetsLept, weight);
+      Hist("HTSubJetsSingleHiggsSingleTopTagBin")-> Fill(HTSubJets, weight);
+       if (indexHiggsCandidate != -99) Hist("HiggsCandidateMassFromBTaggedSubjetsSingleHiggsSingleTopTagBin") -> Fill( HiggsMassFromBTaggedSubjets(higgsCandidateJet, e_CSVM, m_BTaggingMode, m_BTagEffiFilenameMC),weight);
+
+      if (nheptoptag >= 2){
+	Hist("HTJetsSingleHiggsMultiTopTagBin")-> Fill(HTJets, weight);
+	Hist("HTJetsLeptSingleHiggsMultiTopTagBin")-> Fill(HTJetsLept, weight);
+	Hist("HTSubJetsSingleHiggsMultiTopTagBin")-> Fill(HTSubJets, weight);
+	 if (indexHiggsCandidate != -99)Hist("HiggsCandidateMassFromBTaggedSubjetsSingleHiggsMultiTopTagBin") -> Fill( HiggsMassFromBTaggedSubjets(higgsCandidateJet, e_CSVM, m_BTaggingMode, m_BTagEffiFilenameMC),weight);
+      }
+    }
+  }
+
+  if (nhiggstag >= 2){
+    Hist("HTJetsMultiHiggsTagBin")-> Fill(HTJets, weight);
+    Hist("HTJetsLeptMultiHiggsTagBin")-> Fill(HTJetsLept, weight);
+    Hist("HTSubJetsMultiHiggsTagBin")-> Fill(HTSubJets, weight);
+     if (indexHiggsCandidate != -99)Hist("HiggsCandidateMassFromBTaggedSubjetsMultiHiggsTagBin") -> Fill( HiggsMassFromBTaggedSubjets(higgsCandidateJet, e_CSVM, m_BTaggingMode, m_BTagEffiFilenameMC),weight);
+
+    if (nheptoptag == 1){
+      Hist("HTJetsMultiHiggsSingleTopTagBin")-> Fill(HTJets, weight);
+      Hist("HTJetsLeptMultiHiggsSingleTopTagBin")-> Fill(HTJetsLept, weight);
+      Hist("HTSubJetsMultiHiggsSingleTopTagBin")-> Fill(HTSubJets, weight);
+       if (indexHiggsCandidate != -99)Hist("HiggsCandidateMassFromBTaggedSubjetsMultiHiggsSingleTopTagBin") -> Fill( HiggsMassFromBTaggedSubjets(higgsCandidateJet, e_CSVM, m_BTaggingMode, m_BTagEffiFilenameMC),weight);
+    }
+    if (nheptoptag >= 2){
+      Hist("HTJetsMultiHiggsMultiTopTagBin")-> Fill(HTJets, weight);
+      Hist("HTJetsLeptMultiHiggsMultiTopTagBin")-> Fill(HTJetsLept, weight);
+      Hist("HTSubJetsMultiHiggsMultiTopTagBin")-> Fill(HTSubJets, weight);
+       if (indexHiggsCandidate != -99)Hist("HiggsCandidateMassFromBTaggedSubjetsMultiHiggsMultiTopTagBin") -> Fill( HiggsMassFromBTaggedSubjets(higgsCandidateJet, e_CSVM, m_BTaggingMode, m_BTagEffiFilenameMC),weight);
+    }
+  }
+
+  if (nheptoptag == 1){
+    Hist("HTJetsSingleTopTagBin")-> Fill(HTJets, weight);
+    Hist("HTJetsLeptSingleTopTagBin")-> Fill(HTJetsLept, weight);
+    Hist("HTSubJetsSingleTopTagBin")-> Fill(HTSubJets, weight);
+     if (indexHiggsCandidate != -99)Hist("HiggsCandidateMassFromBTaggedSubjetsSingleTopTagBin") -> Fill( HiggsMassFromBTaggedSubjets(higgsCandidateJet, e_CSVM, m_BTaggingMode, m_BTagEffiFilenameMC),weight);
+  }
+  if (nheptoptag >= 2){
+    Hist("HTJetsMultiTopTagBin")-> Fill(HTJets, weight);
+    Hist("HTJetsLeptMultiTopTagBin")-> Fill(HTJetsLept, weight);
+    Hist("HTSubJetsMultiTopTagBin")-> Fill(HTSubJets, weight);
+     if (indexHiggsCandidate != -99)Hist("HiggsCandidateMassFromBTaggedSubjetsMultiTopTagBin") -> Fill( HiggsMassFromBTaggedSubjets(higgsCandidateJet, e_CSVM, m_BTaggingMode, m_BTagEffiFilenameMC),weight);
+  }
+  
+
 
   TopJet combinationJet1;
   TLorentzVector jet1Vec;
   TopJet combinationJet2;
   TLorentzVector jet2Vec;
   TLorentzVector newVector;
-  double InvMass11 = -99;
-  double InvMass21 = -99;
-  double InvMass22 = -99;
-  double InvMassBackToBack = -99;
   TopJet topCandidateJet;
   TopJet HiggsCandidateJet;
   double InvMassCandidates = -99;
@@ -347,95 +413,38 @@ weight=weight*HiggsBRweight();
     jet1Vec.SetPtEtaPhiE(topCandidateJet.pt(), topCandidateJet.eta(), topCandidateJet.phi(), topCandidateJet.energy());
     jet2Vec.SetPtEtaPhiE(HiggsCandidateJet.pt(), HiggsCandidateJet.eta(), HiggsCandidateJet.phi(), HiggsCandidateJet.energy());
     newVector = jet1Vec+jet2Vec;
-    InvMassCandidates = newVector.M();
-
-    
+    InvMassCandidates = newVector.M();    
   }
-Hist("InvMassCandidates") -> Fill(InvMassCandidates, weight);
+  Hist("InvMassCandidates") -> Fill(InvMassCandidates, weight);
 
-  if (indexTopJet1 != -99 &&indexHiggs1 != -99){
-    combinationJet1 = bcc->topjets->at(indexTopJet1);
-    jet1Vec.SetPtEtaPhiE(combinationJet1.pt(), combinationJet1.eta(), combinationJet1.phi(), combinationJet1.energy());
-    combinationJet2 =  bcc->topjets->at(indexHiggs1);  
-    jet2Vec.SetPtEtaPhiE(combinationJet2.pt(), combinationJet2.eta(), combinationJet2.phi(), combinationJet2.energy());
-    newVector = jet1Vec + jet2Vec;
-    InvMass11 =newVector.M();
-    if (indexTopJet2 != -99){
-      if(indexHiggs2 != -99){
-	combinationJet1 = bcc->topjets->at(indexTopJet2);
-	jet1Vec.SetPtEtaPhiE(combinationJet1.pt(), combinationJet1.eta(), combinationJet1.phi(), combinationJet1.energy());
-	combinationJet2 =  bcc->topjets->at(indexHiggs2);
-	jet2Vec.SetPtEtaPhiE(combinationJet2.pt(), combinationJet2.eta(), combinationJet2.phi(), combinationJet2.energy());
-	newVector = jet1Vec + jet2Vec;
-	InvMass21 =newVector.M();
-      }
-      else{
-	combinationJet1 = bcc->topjets->at(indexTopJet2);
-	jet1Vec.SetPtEtaPhiE(combinationJet1.pt(), combinationJet1.eta(), combinationJet1.phi(), combinationJet1.energy());
-	combinationJet2 =  bcc->topjets->at(indexHiggs1);
-	jet2Vec.SetPtEtaPhiE(combinationJet2.pt(), combinationJet2.eta(), combinationJet2.phi(), combinationJet2.energy());
-	newVector = jet1Vec + jet2Vec;
-	InvMass22 =newVector.M();
-      }
-
-      combinationJet1 = bcc->topjets->at(indexHiggs1);
-      if (combinationJet1.deltaPhi(bcc->topjets->at(indexTopJet1)) > combinationJet1.deltaPhi(bcc->topjets->at(indexTopJet2))){
-	combinationJet2 = bcc->topjets->at(indexTopJet1);
-      }
-      else combinationJet2 = bcc->topjets->at(indexTopJet2);
-      jet2Vec.SetPtEtaPhiE(combinationJet2.pt(), combinationJet2.eta(), combinationJet2.phi(), combinationJet2.energy());
-      newVector = jet1Vec + jet2Vec;
-      InvMassBackToBack =newVector.M();
-    }
-    if (indexTopJet2 == -99)InvMassBackToBack = InvMass11;
-    
-  }
-  Hist("InvMass11")-> Fill(InvMass11, weight);
-  Hist("InvMass21")-> Fill(InvMass21, weight);
-  Hist("InvMass22")-> Fill(InvMass22, weight);
-  Hist("InvMassAll")-> Fill(InvMass11, weight);
-  Hist("InvMassAll")-> Fill(InvMass21, weight);
-  Hist("InvMassAll")-> Fill(InvMass22, weight);
-  Hist("InvMassBackToBack")-> Fill(InvMassBackToBack, weight);
 
 
      
-  if(IsRealData == false){
-    bool secondTPrime = false;
-    GenParticle TPrime1;
-    GenParticle TPrime2;
+ //  if(IsRealData == false){
+//     bool secondTPrime = false;
+//     GenParticle TPrime1;
+//     GenParticle TPrime2;
 
-    for( int i=0; i<bcc->genparticles->size(); ++i){
+//     for( int i=0; i<bcc->genparticles->size(); ++i){
  
-      GenParticle genp = bcc->genparticles->at(i); 
-      if (abs(genp.pdgId()) > 15000){//selects the Tprime
-	if(secondTPrime == false) TPrime1 = genp;
-	if(secondTPrime == true)  TPrime2 = genp;
-	int indexDaughter1 = genp.daughter(bcc->genparticles,1)->index();
-	int indexDaughter2 = genp.daughter(bcc->genparticles,2)->index();
-	double deltaRDaughters = bcc->genparticles->at(indexDaughter1).deltaR(bcc->genparticles->at(indexDaughter2));
-	double deltaPhiDaughters = bcc->genparticles->at(indexDaughter1).deltaPhi(bcc->genparticles->at(indexDaughter2));
-	Hist("deltaRDaughters") ->  Fill(deltaRDaughters);
-	Hist("deltaPhiDaughters") ->  Fill(deltaPhiDaughters);
-	// if (secondTPrime = false){
-	// 	GenParticle TPrime1Daughter1 = bcc->genparticles->at(indexDaughter1);
-	// 	GenParticle TPrime1Daughter2 = bcc->genparticles->at(indexDaughter2);
-	//       }
-	//       else {
-	// 	GenParticle TPrime2Daughter1 = bcc->genparticles->at(indexDaughter1);
-	// 	GenParticle TPrime2Daughter2 = bcc->genparticles->at(indexDaughter2);
-	//       }
-	secondTPrime = true;
-	}
-      }
-  
-      double deltaPhiMothers = TPrime1.deltaPhi(TPrime2);
-      Hist("deltaPhiMothers") -> Fill(deltaPhiMothers);
-    }
- 
+//       GenParticle genp = bcc->genparticles->at(i); 
 
-
+//       if (abs(genp.pdgId()) > 15000){//selects the Tprime
+// 	if(secondTPrime == false) TPrime1 = genp;
+// 	if(secondTPrime == true)  TPrime2 = genp;
+// 	int indexDaughter1 = genp.daughter(bcc->genparticles,1)->index();
+// 	int indexDaughter2 = genp.daughter(bcc->genparticles,2)->index();
+// 	double deltaRDaughters = bcc->genparticles->at(indexDaughter1).deltaR(bcc->genparticles->at(indexDaughter2));
+// 	double deltaPhiDaughters = bcc->genparticles->at(indexDaughter1).deltaPhi(bcc->genparticles->at(indexDaughter2));
+// 	Hist("deltaRDaughters") ->  Fill(deltaRDaughters);
+// 	Hist("deltaPhiDaughters") ->  Fill(deltaPhiDaughters);
+// 	secondTPrime = true;
+//       }
+//     }
   
+//     double deltaPhiMothers = TPrime1.deltaPhi(TPrime2);
+//     Hist("deltaPhiMothers") -> Fill(deltaPhiMothers);
+//   }
 }
 void cutflowHists::Finish()
 {

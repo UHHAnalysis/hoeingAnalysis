@@ -6,6 +6,7 @@
 // SFrame include(s):
 #include "../SFrameAnalysis/include/AnalysisCycle.h"
 #include "../SFrameAnalysis/include/BTagEffHistsTPrime.h"
+#include "../SFrameAnalysis/include/Cleaner.h"
 //#include "include/Scaling.h"
 /**
  *   @short Example of an analysis cycle

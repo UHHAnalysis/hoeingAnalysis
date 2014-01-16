@@ -16,5 +16,6 @@
 #pragma link C++ class hoeingCycle+;
 #pragma link C++ class cutflowCycle+;
 #pragma link C++ class TPrimePreselectionCycle+;
+#pragma link C++ class crosscheckCycle+;
 
 #endif // __CINT__

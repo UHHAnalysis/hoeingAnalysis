@@ -1,4 +1,3 @@
-
 // $Id: cutflowCycle.cxx,v 1.2 2013/06/12 12:35:42 peiffer Exp $
 
 #include <iostream>
@@ -105,9 +104,9 @@ void cutflowCycle::BeginInputData( const SInputData& id ) throw( SError )
   nJets->addSelectionModule(new NTopJetSelection(2, 99, 0., 99.));
   topTag->addSelectionModule(new NHEPTopTagSelection(1, 99));
   topAndSubBTag->addSelectionModule(new NHEPTopAndSubBTagSelection(1, 99, e_CSVM, m_BTaggingMode, m_BTagEffiFilenameMC));
-  topAndSubBTagPlusHiggsTag->addSelectionModule(new HEPTopAndSubBTagPlusOtherHiggsTag(e_CSVM, e_CSVM, e_CSVM, m_BTaggingMode, m_BTagEffiFilenameMC));
-  HT1000->addSelectionModule(new HTCut(1000.));
-  invertedTopTag->addSelectionModule(new InvertedTopTagRegularBTagRegularHiggsTag(e_CSVM, e_CSVM, e_CSVM, m_BTaggingMode, m_BTagEffiFilenameMC));
+  topAndSubBTagPlusHiggsTag->addSelectionModule(new HEPTopAndSubBTagPlusOtherHiggsTag(e_CSVM, e_CSVM, e_CSVM, m_BTaggingMode, m_BTagEffiFilenameMC, 60.));
+  HT1000->addSelectionModule(new HTCut(1380.));
+  invertedTopTag->addSelectionModule(new InvertedTopTagRegularBTagRegularHiggsTag(e_CSVM, e_CSVM, e_CSVM, m_BTaggingMode, m_BTagEffiFilenameMC, 60.));
   fullyInvertedHiggsTag->addSelectionModule(new RegularTopTagRegularBTagFullyInvertedHiggsTag(e_CSVM, e_CSVL, e_CSVL, m_BTaggingMode, m_BTagEffiFilenameMC));
   fullyInvertedTopAndHiggsTag->addSelectionModule(new InvertedTopTagRegularBTagFullyInvertedHiggsTag(e_CSVM, e_CSVL, e_CSVL, m_BTaggingMode, m_BTagEffiFilenameMC));
 
@@ -128,24 +127,14 @@ void cutflowCycle::BeginInputData( const SInputData& id ) throw( SError )
 
   // ---------------- set up the histogram collections --------------------
 
- RegisterHistCollection( new cutflowHists("NoCuts",m_BTaggingMode,m_BTagEffiFilenameMC) );
+ RegisterHistCollection( new cutflowHists("NoCuts", m_BTaggingMode, m_BTagEffiFilenameMC) );
   // histograms after the top selection
-  RegisterHistCollection( new cutflowHists("cutflow1" ,m_BTaggingMode,m_BTagEffiFilenameMC) );
-  RegisterHistCollection( new cutflowHists("cutflow2",m_BTaggingMode,m_BTagEffiFilenameMC) );
-  RegisterHistCollection( new cutflowHists("cutflow3",m_BTaggingMode,m_BTagEffiFilenameMC) );
-  RegisterHistCollection( new cutflowHists("cutflow4",m_BTaggingMode,m_BTagEffiFilenameMC) );
-  RegisterHistCollection( new cutflowHists("cutflow5",m_BTaggingMode,m_BTagEffiFilenameMC) );
-  RegisterHistCollection( new cutflowHists("cutflow6",m_BTaggingMode,m_BTagEffiFilenameMC) );
-
-  // histograms without any cuts
-  // RegisterHistCollection( new cutflowHists("NoCuts") );
-//   // histograms after the top selection
-//   RegisterHistCollection( new cutflowHists("cutflow1") );
-//   RegisterHistCollection( new cutflowHists("cutflow2") );
-//   RegisterHistCollection( new cutflowHists("cutflow3") );
-//   RegisterHistCollection( new cutflowHists("cutflow4") );
-//   RegisterHistCollection( new cutflowHists("cutflow5") );
-//   RegisterHistCollection( new cutflowHists("cutflow6") );
+  RegisterHistCollection( new cutflowHists("cutflow1", m_BTaggingMode, m_BTagEffiFilenameMC) );
+  RegisterHistCollection( new cutflowHists("cutflow2", m_BTaggingMode, m_BTagEffiFilenameMC) );
+  RegisterHistCollection( new cutflowHists("cutflow3", m_BTaggingMode, m_BTagEffiFilenameMC) );
+  RegisterHistCollection( new cutflowHists("cutflow4", m_BTaggingMode, m_BTagEffiFilenameMC) );
+  RegisterHistCollection( new cutflowHists("cutflow5", m_BTaggingMode, m_BTagEffiFilenameMC) );
+  RegisterHistCollection( new cutflowHists("cutflow6", m_BTaggingMode, m_BTagEffiFilenameMC) ); 
   RegisterHistCollection( new BTagEffHistsTPrime("BTagEff") );
 
   
@@ -183,7 +172,7 @@ void cutflowCycle::ExecuteEvent( const SInputData& id, Double_t weight) throw( S
   // first step: call Execute event of base class to perform basic consistency checks
   // also, the good-run selection is performed there and the calculator is reset
   AnalysisCycle::ExecuteEvent( id, weight);
-   
+  Cleaner cleaner;
 
 
   // get the selections
@@ -209,7 +198,7 @@ void cutflowCycle::ExecuteEvent( const SInputData& id, Double_t weight) throw( S
 
 
   // start the analysis
-  HistsNoCuts->Fill();
+ 
 
 
 
@@ -217,47 +206,52 @@ void cutflowCycle::ExecuteEvent( const SInputData& id, Double_t weight) throw( S
   BaseCycleContainer* bcc = calc->GetBaseCycleContainer();
   bool IsRealData = calc->IsRealData();
 
-  bool invertTopTag = 0;
+  bool invertTopTag = 1;
   bool invertHiggsTag = 0;
   bool invertTopAndHiggsTag = 0;
-  bool regularSelection = 1;
+  bool regularSelection = 0;
+  bool FillBTagEfficiency = 0;
 
+  if (!bcc->isRealData && bcc->jets) cleaner.JetEnergyResolutionShifter();
+  //HistsNoCuts->Fill();
 
-
-
-  if(!trigger->passSelection(bcc))  throw SError( SError::SkipEvent );
-  if(!nJets->passSelection(bcc)) throw SError( SError::SkipEvent );
-  if(!HT1000->passSelection(bcc)) throw SError( SError::SkipEvent );
-  //  if(trigger->passSelection(bcc))Histscutflow1->Fill();
-  //    else throw SError( SError::SkipEvent );
-  //    if(nJets->passSelection(bcc)) Histscutflow2->Fill();
-  //    else throw SError( SError::SkipEvent );
-  //    if(HT1000->passSelection(bcc))Histscutflow3->Fill();
-  // else throw SError( SError::SkipEvent );
+  if(!trigger->passSelection(bcc)) throw SError( SError::SkipEvent );
+  if(!nJets->passSelection(bcc))throw SError( SError::SkipEvent );
   
-  
+  // if(!HT1000->passSelection(bcc))  throw SError( SError::SkipEvent );
   if(invertTopTag){
-    if (invertedTopTag->passSelection(bcc)) Histscutflow6->Fill();
+    if (invertedTopTag->passSelection(bcc)) Histscutflow5->Fill();
     else throw SError( SError::SkipEvent );
   }
   if (invertHiggsTag){
-    if (fullyInvertedHiggsTag->passSelection(bcc))Histscutflow6->Fill();
+    if (fullyInvertedHiggsTag->passSelection(bcc))Histscutflow5->Fill();
     else throw SError( SError::SkipEvent );
   }
   if (invertTopAndHiggsTag){
-    if (fullyInvertedTopAndHiggsTag->passSelection(bcc))Histscutflow6->Fill();
+    if (fullyInvertedTopAndHiggsTag->passSelection(bcc))Histscutflow5->Fill();
     else throw SError( SError::SkipEvent );
   }
+
   if (regularSelection){
-    if(topTag->passSelection(bcc)) Histscutflow4->Fill();
-    else throw SError( SError::SkipEvent );
+    if(!topTag->passSelection(bcc)) throw SError( SError::SkipEvent );
+      // Histscutflow3->Fill();
+      //else throw SError( SError::SkipEvent );
     //  if (IsRealData == false)BTagEff_Hists->Fill(); 
-    if(topAndSubBTag->passSelection(bcc))Histscutflow5->Fill();
-    else throw SError( SError::SkipEvent );
-    if(topAndSubBTagPlusHiggsTag->passSelection(bcc))Histscutflow6->Fill();
+    if(!topAndSubBTag->passSelection(bcc))throw SError( SError::SkipEvent );
+      //Histscutflow4->Fill();
+      //else throw SError( SError::SkipEvent );
+    if(topAndSubBTagPlusHiggsTag->passSelection(bcc))Histscutflow5->Fill();
+      else throw SError( SError::SkipEvent );
+  }
+
+  if (FillBTagEfficiency){
+    if(topTag->passSelection(bcc)) BTagEff_Hists->Fill(); 
     else throw SError( SError::SkipEvent );
   }
- 
+   if(HT1000->passSelection(bcc)) Histscutflow6->Fill();
+   else throw SError( SError::SkipEvent ); 
+
+  // WriteOutputTree();
 
   return;
   

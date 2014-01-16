@@ -156,21 +156,20 @@ void TPrimePreselectionCycle::ExecuteEvent( const SInputData& id, Double_t weigh
   BaseHists* Histscutflow1 = GetHistCollection("cutflow1");
   BaseHists* Histscutflow2 = GetHistCollection("cutflow2");
   BaseHists* Histscutflow3 = GetHistCollection("cutflow3");
- 
-
+  
+  
 
   // start the analysis
-  HistsNoCuts->Fill();
-
+  // HistsNoCuts->Fill();
+  Cleaner cleaner;
   EventCalc* calc = EventCalc::Instance();
   BaseCycleContainer* bcc = calc->GetBaseCycleContainer();
+  
+  if (!bcc->isRealData && bcc->jets) cleaner.JetEnergyResolutionShifter();
 
-  if(trigger->passSelection(bcc)) Histscutflow1->Fill();
-  else throw SError( SError::SkipEvent );
-  if(nJets->passSelection(bcc)) Histscutflow2->Fill();
-  else throw SError( SError::SkipEvent );
-  if(HT1000->passSelection(bcc)) Histscutflow3->Fill();
-  else throw SError( SError::SkipEvent );
+  if(!trigger->passSelection(bcc)) throw SError( SError::SkipEvent );
+  if(!nJets->passSelection(bcc)) throw SError( SError::SkipEvent );
+  if(!HT1000->passSelection(bcc)) throw  SError( SError::SkipEvent );
   WriteOutputTree();
   return;
   

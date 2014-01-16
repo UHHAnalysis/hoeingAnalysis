@@ -1,12 +1,11 @@
 // Dear emacs, this is -*- c++ -*-
-// $Id: cutflowCycle.h,v 1.1 2013/03/26 13:01:44 hoeing Exp $
-#ifndef cutflowCycle_H
-#define cutflowCycle_H
+// $Id: crosscheckCycle.h,v 1.1 2013/03/26 13:01:44 hoeing Exp $
+#ifndef crosscheckCycle_H
+#define crosscheckCycle_H
 
 // SFrame include(s):
 #include "../SFrameAnalysis/include/AnalysisCycle.h"
 #include "../SFrameAnalysis/include/BTagEffHistsTPrime.h"
-#include "../SFrameAnalysis/include/Cleaner.h"
 //#include "include/Scaling.h"
 /**
  *   @short Example of an analysis cycle
@@ -19,13 +18,13 @@
  *  @version $Revision: 1.1 $
  */
 
-class cutflowCycle : public AnalysisCycle {
+class crosscheckCycle : public AnalysisCycle {
 
 public:
   /// Default constructor
-  cutflowCycle();
+  crosscheckCycle();
   /// Default destructor
-  ~cutflowCycle();
+  ~crosscheckCycle();
 
   /// Function called at the beginning of the cycle
   void BeginCycle() throw( SError );
@@ -52,9 +51,9 @@ private:
 //   BTaggingRoutine* m_bsf;
   
   // Macro adding the functions for dictionary generation
-  ClassDef( cutflowCycle, 0 );
+  ClassDef( crosscheckCycle, 0 );
 
-}; // class cutflowCycle
+}; // class crosscheckCycle
 
-#endif // cutflowCycle_H
+#endif // crosscheckCycle_H
 

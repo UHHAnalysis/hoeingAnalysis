@@ -21,50 +21,45 @@
 
 
 
-	<Cycle Name="cutflowCycle" RunMode="PROOF" ProofServer="lite://"  ProofWorkDir="../../Output/pod/" OutputDirectory="../../Output/cutflow_CA8Pruned/" PostFix="" TargetLumi="19708.0">
+	<Cycle Name="cutflowCycle" RunMode="PROOF" ProofServer="lite://"  ProofWorkDir="../../Output/pod/" OutputDirectory="../../Output/cutflow_CA8Pruned_MHiggs100to150/" PostFix="" TargetLumi="19708.0"> 
 	
 	
 	
-<!--<Cycle Name="cutflowCycle" OutputDirectory="../../Output/cutflow/" PostFix="" TargetLumi="19483.0">-->
+<!--<Cycle Name="cutflowCycle" OutputDirectory="../../Output/cutflow_CA8Pruned_MHiggs100to150/" PostFix="" TargetLumi="19708.0">-->
 
 
 
 <!--
 
 <InputData Lumi="19708." NEventsMax="-1" Type="DATA" Version="DATAA" Cacheable="False">
-<In FileName="/nfs/dust/cms/user/hoeing/SFrame/Output/TPrimePreselection_CA15Filtered/TPrimePreselectionCycle.DATA.DATAA.root" Lumi="0.0"/>
+<In FileName="/nfs/dust/cms/user/hoeing/SFrame/Output/TPrimePreselection_CA8Pruned/TPrimePreselectionCycle.DATA.DATAA.root" Lumi="0.0"/>
 <InputTree Name="AnalysisTree" />
       </InputData>
 
 
 <InputData Lumi="19708." NEventsMax="-1" Type="DATA" Version="DATAB" Cacheable="False">
-<In FileName="/nfs/dust/cms/user/hoeing/SFrame/Output/TPrimePreselection_CA15Filtered/TPrimePreselectionCycle.DATA.DATAB.root" Lumi="0.0"/>
+<In FileName="/nfs/dust/cms/user/hoeing/SFrame/Output/TPrimePreselection_CA8Pruned/TPrimePreselectionCycle.DATA.DATAB.root" Lumi="0.0"/>
 <InputTree Name="AnalysisTree" />
       </InputData>
 
 
 <InputData Lumi="19708." NEventsMax="-1" Type="DATA" Version="DATAC" Cacheable="False">
-<In FileName="/nfs/dust/cms/user/hoeing/SFrame/Output/TPrimePreselection_CA15Filtered/TPrimePreselectionCycle.DATA.DATAC.root" Lumi="0.0"/>
+<In FileName="/nfs/dust/cms/user/hoeing/SFrame/Output/TPrimePreselection_CA8Pruned/TPrimePreselectionCycle.DATA.DATAC.root" Lumi="0.0"/>
 <InputTree Name="AnalysisTree" />
       </InputData>
 
 
 <InputData Lumi="19708." NEventsMax="-1" Type="DATA" Version="DATAD" Cacheable="False">
-<In FileName="/nfs/dust/cms/user/hoeing/SFrame/Output/TPrimePreselection_CA15Filtered/TPrimePreselectionCycle.DATA.DATAD.root" Lumi="0.0"/>
+<In FileName="/nfs/dust/cms/user/hoeing/SFrame/Output/TPrimePreselection_CA8Pruned/TPrimePreselectionCycle.DATA.DATAD.root" Lumi="0.0"/>
 <InputTree Name="AnalysisTree" />
       </InputData>
 
-
-
-
+-->
 
 <InputData Lumi="3601.48670781" NEventsMax="-1" Type="MC" Version="QCD500to1000" Cacheable="False"> 
 <In FileName="/nfs/dust/cms/user/hoeing/SFrame/Output/TPrimePreselection_CA8Pruned/TPrimePreselectionCycle.MC.QCD500to1000.root" Lumi="0.0"/>
-
                         <InputTree Name="AnalysisTree" />
                 </InputData>
-
-
 
 
 <InputData Lumi="66508.4166667" NEventsMax="-1" Type="MC" Version="QCD1000A" Cacheable="False"> 
@@ -99,23 +94,8 @@
 <In FileName="/nfs/dust/cms/user/hoeing/SFrame/Output/TPrimePreselection_CA8Pruned/TPrimePreselectionCycle.MC.QCD1000CC.root" Lumi="0.0"/>
                         <InputTree Name="AnalysisTree" />
                 </InputData>
--->
-<!-- WEIGHTS FOR CA15 FILTERED JETS -->
-<!--
-
- <InputData Lumi="284141.069959" NEventsMax="-1" Type="MC" Version="TTbarHadronic" Cacheable="False">
-<In FileName="/nfs/dust/cms/user/hoeing/SFrame/Output/TPrimePreselection_CA8Pruned/TPrimePreselectionCycle.MC.TTbarHadronic.root" Lumi="0.0"/>
-        <InputTree Name="AnalysisTree" /> 
-      </InputData>
 
 
- <InputData Lumi="231880.447953" NEventsMax="-1" Type="MC" Version="TTbarSemiLep" Cacheable="False">
-<In FileName="/nfs/dust/cms/user/hoeing/SFrame/Output/TPrimePreselection_CA8Pruned/TPrimePreselectionCycle.MC.TTbarSemiLep.root" Lumi="0.0"/>
-        <InputTree Name="AnalysisTree" /> 
-      </InputData>
-
--->
-<!-- WEIGHTS FOR CA8 PRUNED JETS -->
 
 <InputData Lumi="283769.510745" NEventsMax="-1" Type="MC" Version="TTbarHadronic" Cacheable="False">
 <In FileName="/nfs/dust/cms/user/hoeing/SFrame/Output/TPrimePreselection_CA8Pruned/TPrimePreselectionCycle.MC.TTbarHadronic.root" Lumi="0.0"/>
@@ -129,8 +109,9 @@
       </InputData>
 
 
-<!--
- <InputData Lumi="24377083.3333" NEventsMax="-1" Type="MC" Version="TPTHTH1000" Cacheable="False"> 
+
+
+ <InputData Lumi="28835119.0476" NEventsMax="-1" Type="MC" Version="TPTHTH1000" Cacheable="False"> 
 <In FileName="/nfs/dust/cms/user/hoeing/SFrame/Output/TPrimePreselection_CA8Pruned/TPrimePreselectionCycle.MC.TPTHTH1000.root" Lumi="0.0"/>
         <InputTree Name="AnalysisTree" />
         </InputData> 
@@ -149,10 +130,7 @@
         </InputData> 
 
 
-<InputData Lumi="1156376.06838" NEventsMax="-1" Type="MC" Version="TPTHTH700" Cacheable="True"> 
-<In FileName="/nfs/dust/cms/user/hoeing/SFrame/Output/TPrimePreselection_CA8Pruned/TPrimePreselectionCycle.MC.TPTHTH700.root" Lumi="0.0"/>
-        <InputTree Name="AnalysisTree" />
-        </InputData> 
+
 
 
 <InputData Lumi="550913.793103" NEventsMax="-1" Type="MC" Version="TPTHTH600" Cacheable="False"> 
@@ -168,28 +146,37 @@
         </InputData> 
 
 
+<InputData Lumi="1676581.19658" NEventsMax="-1" Type="MC" Version="TPTHTH700" Cacheable="False"> 
+<In FileName="/nfs/dust/cms/user/hoeing/SFrame/Output/TPrimePreselection_CA8Pruned/TPrimePreselectionCycle.MC.TPTHTH700.root" Lumi="0.0"/>
+        <InputTree Name="AnalysisTree" />
+        </InputData> 
+
+
+
+<!--
+
 
 <InputData Lumi="29809451.2195" NEventsMax="-1" Type="MC" Version="TPBWBW1000Inc" Cacheable="False"> 
-<In FileName="/nfs/dust/cms/user/hoeing/SFrame/Output/TPrimePreselection_CA15Filtered/TPrimePreselectionCycle.MC.TPBWBW1000Inc.root" Lumi="0.0"/>
+<In FileName="/nfs/dust/cms/user/hoeing/SFrame/Output/TPrimePreselection_CA8Pruned/TPrimePreselectionCycle.MC.TPBWBW1000Inc.root" Lumi="0.0"/>
         <InputTree Name="AnalysisTree" />
         </InputData> 
 
 
 
 <InputData Lumi="89756707.3171" NEventsMax="-1" Type="MC" Version="TPTHBW1000Inc" Cacheable="False"> 
-<In FileName="/nfs/dust/cms/user/hoeing/SFrame/Output/TPrimePreselection_CA15Filtered/TPrimePreselectionCycle.MC.TPTHBW1000Inc.root" Lumi="0.0"/>
+<In FileName="/nfs/dust/cms/user/hoeing/SFrame/Output/TPrimePreselection_CA8Pruned/TPrimePreselectionCycle.MC.TPTHBW1000Inc.root" Lumi="0.0"/>
         <InputTree Name="AnalysisTree" />
         </InputData> 
 
 
 
 <InputData Lumi="89727743.9024" NEventsMax="-1" Type="MC" Version="TPTHTZ1000Inc" Cacheable="False"> 
-<In FileName="/nfs/dust/cms/user/hoeing/SFrame/Output/TPrimePreselection_CA15Filtered/TPrimePreselectionCycle.MC.TPTHTZ1000Inc.root" Lumi="0.0"/>
+<In FileName="/nfs/dust/cms/user/hoeing/SFrame/Output/TPrimePreselection_CA8Pruned/TPrimePreselectionCycle.MC.TPTHTZ1000Inc.root" Lumi="0.0"/>
         <InputTree Name="AnalysisTree" />
         </InputData> 
 
 <InputData Lumi="29838414.6341" NEventsMax="-1" Type="MC" Version="TPTZBW1000Inc" Cacheable="False"> 
-<In FileName="/nfs/dust/cms/user/hoeing/SFrame/Output/TPrimePreselection_CA15Filtered/TPrimePreselectionCycle.MC.TPTZBW1000Inc.root" Lumi="0.0"/>
+<In FileName="/nfs/dust/cms/user/hoeing/SFrame/Output/TPrimePreselection_CA8Pruned/TPrimePreselectionCycle.MC.TPTZBW1000Inc.root" Lumi="0.0"/>
         <InputTree Name="AnalysisTree" />
         </InputData> 
 
@@ -197,34 +184,34 @@
 
 
 <InputData Lumi="30986585.3659" NEventsMax="-1" Type="MC" Version="TPTZTZ1000Inc" Cacheable="False"> 
-<In FileName="/nfs/dust/cms/user/hoeing/SFrame/Output/TPrimePreselection_CA15Filtered/TPrimePreselectionCycle.MC.TPTZTZ1000Inc.root" Lumi="0.0"/>
+<In FileName="/nfs/dust/cms/user/hoeing/SFrame/Output/TPrimePreselection_CA8Pruned/TPrimePreselectionCycle.MC.TPTZTZ1000Inc.root" Lumi="0.0"/>
         <InputTree Name="AnalysisTree" />
         </InputData> 
 
 
 
 <InputData Lumi="12263229.8137" NEventsMax="-1" Type="MC" Version="TPBWBW900Inc" Cacheable="False"> 
-<In FileName="/nfs/dust/cms/user/hoeing/SFrame/Output/TPrimePreselection_CA15Filtered/TPrimePreselectionCycle.MC.TPBWBW900Inc.root" Lumi="0.0"/>
+<In FileName="/nfs/dust/cms/user/hoeing/SFrame/Output/TPrimePreselection_CA8Pruned/TPrimePreselectionCycle.MC.TPBWBW900Inc.root" Lumi="0.0"/>
         <InputTree Name="AnalysisTree" />
         </InputData> 
 
 <InputData Lumi="3841346.15385" NEventsMax="-1" Type="MC" Version="TPBWBW800Inc" Cacheable="False"> 
-<In FileName="/nfs/dust/cms/user/hoeing/SFrame/Output/TPrimePreselection_CA15Filtered/TPrimePreselectionCycle.MC.TPBWBW800Inc.root" Lumi="0.0"/>
+<In FileName="/nfs/dust/cms/user/hoeing/SFrame/Output/TPrimePreselection_CA8Pruned/TPrimePreselectionCycle.MC.TPBWBW800Inc.root" Lumi="0.0"/>
         <InputTree Name="AnalysisTree" />
         </InputData> 
 
 <InputData Lumi="1536801.40598" NEventsMax="-1" Type="MC" Version="TPBWBW700Inc" Cacheable="False"> 
-<In FileName="/nfs/dust/cms/user/hoeing/SFrame/Output/TPrimePreselection_CA15Filtered/TPrimePreselectionCycle.MC.TPBWBW700Inc.root" Lumi="0.0"/>
+<In FileName="/nfs/dust/cms/user/hoeing/SFrame/Output/TPrimePreselection_CA8Pruned/TPrimePreselectionCycle.MC.TPBWBW700Inc.root" Lumi="0.0"/>
         <InputTree Name="AnalysisTree" />
         </InputData> 
 
 <InputData Lumi="542346.698113" NEventsMax="-1" Type="MC" Version="TPBWBW600Inc" Cacheable="False"> 
-<In FileName="/nfs/dust/cms/user/hoeing/SFrame/Output/TPrimePreselection_CA15Filtered/TPrimePreselectionCycle.MC.TPBWBW600Inc.root" Lumi="0.0"/>
+<In FileName="/nfs/dust/cms/user/hoeing/SFrame/Output/TPrimePreselection_CA8Pruned/TPrimePreselectionCycle.MC.TPBWBW600Inc.root" Lumi="0.0"/>
         <InputTree Name="AnalysisTree" />
         </InputData> 
 
 <InputData Lumi="173619.298246" NEventsMax="-1" Type="MC" Version="TPBWBW500Inc" Cacheable="False"> 
-<In FileName="/nfs/dust/cms/user/hoeing/SFrame/Output/TPrimePreselection_CA15Filtered/TPrimePreselectionCycle.MC.TPBWBW500Inc.root" Lumi="0.0"/>
+<In FileName="/nfs/dust/cms/user/hoeing/SFrame/Output/TPrimePreselection_CA8Pruned/TPrimePreselectionCycle.MC.TPBWBW500Inc.root" Lumi="0.0"/>
         <InputTree Name="AnalysisTree" />
         </InputData> 
 
@@ -232,27 +219,27 @@
 
 
 <InputData Lumi="35578633.5404" NEventsMax="-1" Type="MC" Version="TPTHBW900Inc" Cacheable="False"> 
-<In FileName="/nfs/dust/cms/user/hoeing/SFrame/Output/TPrimePreselection_CA15Filtered/TPrimePreselectionCycle.MC.TPTHBW900Inc.root" Lumi="0.0"/>
+<In FileName="/nfs/dust/cms/user/hoeing/SFrame/Output/TPrimePreselection_CA8Pruned/TPrimePreselectionCycle.MC.TPTHBW900Inc.root" Lumi="0.0"/>
         <InputTree Name="AnalysisTree" />
         </InputData> 
 
 <InputData Lumi="6721442.30769" NEventsMax="-1" Type="MC" Version="TPTHBW800Inc" Cacheable="False"> 
-<In FileName="/nfs/dust/cms/user/hoeing/SFrame/Output/TPrimePreselection_CA15Filtered/TPrimePreselectionCycle.MC.TPTHBW800Inc.root" Lumi="0.0"/>
+<In FileName="/nfs/dust/cms/user/hoeing/SFrame/Output/TPrimePreselection_CA8Pruned/TPrimePreselectionCycle.MC.TPTHBW800Inc.root" Lumi="0.0"/>
         <InputTree Name="AnalysisTree" />
         </InputData> 
 
 <InputData Lumi="2394604.56942" NEventsMax="-1" Type="MC" Version="TPTHBW700Inc" Cacheable="False"> 
-<In FileName="/nfs/dust/cms/user/hoeing/SFrame/Output/TPrimePreselection_CA15Filtered/TPrimePreselectionCycle.MC.TPTHBW700Inc.root" Lumi="0.0"/>
+<In FileName="/nfs/dust/cms/user/hoeing/SFrame/Output/TPrimePreselection_CA8Pruned/TPrimePreselectionCycle.MC.TPTHBW700Inc.root" Lumi="0.0"/>
         <InputTree Name="AnalysisTree" />
         </InputData> 
 
 <InputData Lumi="778968.160377" NEventsMax="-1" Type="MC" Version="TPTHBW600Inc" Cacheable="False"> 
-<In FileName="/nfs/dust/cms/user/hoeing/SFrame/Output/TPrimePreselection_CA15Filtered/TPrimePreselectionCycle.MC.TPTHBW600Inc.root" Lumi="0.0"/>
+<In FileName="/nfs/dust/cms/user/hoeing/SFrame/Output/TPrimePreselection_CA8Pruned/TPrimePreselectionCycle.MC.TPTHBW600Inc.root" Lumi="0.0"/>
         <InputTree Name="AnalysisTree" />
         </InputData> 
 
 <InputData Lumi="228459.649123" NEventsMax="-1" Type="MC" Version="TPTHBW500Inc" Cacheable="False"> 
-<In FileName="/nfs/dust/cms/user/hoeing/SFrame/Output/TPrimePreselection_CA15Filtered/TPrimePreselectionCycle.MC.TPTHBW500Inc.root" Lumi="0.0"/>
+<In FileName="/nfs/dust/cms/user/hoeing/SFrame/Output/TPrimePreselection_CA8Pruned/TPrimePreselectionCycle.MC.TPTHBW500Inc.root" Lumi="0.0"/>
         <InputTree Name="AnalysisTree" />
         </InputData> 
 
@@ -260,29 +247,29 @@
 
 
 <InputData Lumi="35571055.9006" NEventsMax="-1" Type="MC" Version="TPTHTZ900Inc" Cacheable="False"> 
-<In FileName="/nfs/dust/cms/user/hoeing/SFrame/Output/TPrimePreselection_CA15Filtered/TPrimePreselectionCycle.MC.TPTHTZ900Inc.root" Lumi="0.0"/>
+<In FileName="/nfs/dust/cms/user/hoeing/SFrame/Output/TPrimePreselection_CA8Pruned/TPrimePreselectionCycle.MC.TPTHTZ900Inc.root" Lumi="0.0"/>
         <InputTree Name="AnalysisTree" />
         </InputData> 
 
 <InputData Lumi="6722115.3846" NEventsMax="-1" Type="MC" Version="TPTHTZ800Inc" Cacheable="False"> 
-<In FileName="/nfs/dust/cms/user/hoeing/SFrame/Output/TPrimePreselection_CA15Filtered/TPrimePreselectionCycle.MC.TPTHTZ800Inc.root" Lumi="0.0"/>
+<In FileName="/nfs/dust/cms/user/hoeing/SFrame/Output/TPrimePreselection_CA8Pruned/TPrimePreselectionCycle.MC.TPTHTZ800Inc.root" Lumi="0.0"/>
         <InputTree Name="AnalysisTree" />
         </InputData> 
 
 
 
 <InputData Lumi="2389859.40246" NEventsMax="-1" Type="MC" Version="TPTHTZ700Inc" Cacheable="False"> 
-<In FileName="/nfs/dust/cms/user/hoeing/SFrame/Output/TPrimePreselection_CA15Filtered/TPrimePreselectionCycle.MC.TPTHTZ700Inc.root" Lumi="0.0"/>
+<In FileName="/nfs/dust/cms/user/hoeing/SFrame/Output/TPrimePreselection_CA8Pruned/TPrimePreselectionCycle.MC.TPTHTZ700Inc.root" Lumi="0.0"/>
         <InputTree Name="AnalysisTree" />
         </InputData> 
 
 <InputData Lumi="780849.056604" NEventsMax="-1" Type="MC" Version="TPTHTZ600Inc" Cacheable="False"> 
-<In FileName="/nfs/dust/cms/user/hoeing/SFrame/Output/TPrimePreselection_CA15Filtered/TPrimePreselectionCycle.MC.TPTHTZ600Inc.root" Lumi="0.0"/>
+<In FileName="/nfs/dust/cms/user/hoeing/SFrame/Output/TPrimePreselection_CA8Pruned/TPrimePreselectionCycle.MC.TPTHTZ600Inc.root" Lumi="0.0"/>
         <InputTree Name="AnalysisTree" />
         </InputData> 
 
 <InputData Lumi="227936.842105" NEventsMax="-1" Type="MC" Version="TPTHTZ500Inc" Cacheable="False"> 
-<In FileName="/nfs/dust/cms/user/hoeing/SFrame/Output/TPrimePreselection_CA15Filtered/TPrimePreselectionCycle.MC.TPTHTZ500Inc.root" Lumi="0.0"/>
+<In FileName="/nfs/dust/cms/user/hoeing/SFrame/Output/TPrimePreselection_CA8Pruned/TPrimePreselectionCycle.MC.TPTHTZ500Inc.root" Lumi="0.0"/>
         <InputTree Name="AnalysisTree" />
         </InputData> 
 
@@ -291,27 +278,27 @@
 
 
 <InputData Lumi="11877763.9752" NEventsMax="-1" Type="MC" Version="TPTZBW900Inc" Cacheable="False"> 
-<In FileName="/nfs/dust/cms/user/hoeing/SFrame/Output/TPrimePreselection_CA15Filtered/TPrimePreselectionCycle.MC.TPTZBW900Inc.root" Lumi="0.0"/>
+<In FileName="/nfs/dust/cms/user/hoeing/SFrame/Output/TPrimePreselection_CA8Pruned/TPrimePreselectionCycle.MC.TPTZBW900Inc.root" Lumi="0.0"/>
         <InputTree Name="AnalysisTree" />
         </InputData> 
 
 <InputData Lumi="4648990.38462" NEventsMax="-1" Type="MC" Version="TPTZBW800Inc" Cacheable="False"> 
-<In FileName="/nfs/dust/cms/user/hoeing/SFrame/Output/TPrimePreselection_CA15Filtered/TPrimePreselectionCycle.MC.TPTZBW800Inc.root" Lumi="0.0"/>
+<In FileName="/nfs/dust/cms/user/hoeing/SFrame/Output/TPrimePreselection_CA8Pruned/TPrimePreselectionCycle.MC.TPTZBW800Inc.root" Lumi="0.0"/>
         <InputTree Name="AnalysisTree" />
         </InputData> 
 
 <InputData Lumi="2384604.56942" NEventsMax="-1" Type="MC" Version="TPTZBW700Inc" Cacheable="False"> 
-<In FileName="/nfs/dust/cms/user/hoeing/SFrame/Output/TPrimePreselection_CA15Filtered/TPrimePreselectionCycle.MC.TPTZBW700Inc.root" Lumi="0.0"/>
+<In FileName="/nfs/dust/cms/user/hoeing/SFrame/Output/TPrimePreselection_CA8Pruned/TPrimePreselectionCycle.MC.TPTZBW700Inc.root" Lumi="0.0"/>
         <InputTree Name="AnalysisTree" />
         </InputData> 
 
 <InputData Lumi="674321.933962" NEventsMax="-1" Type="MC" Version="TPTZBW600Inc" Cacheable="False"> 
-<In FileName="/nfs/dust/cms/user/hoeing/SFrame/Output/TPrimePreselection_CA15Filtered/TPrimePreselectionCycle.MC.TPTZBW600Inc.root" Lumi="0.0"/>
+<In FileName="/nfs/dust/cms/user/hoeing/SFrame/Output/TPrimePreselection_CA8Pruned/TPrimePreselectionCycle.MC.TPTZBW600Inc.root" Lumi="0.0"/>
         <InputTree Name="AnalysisTree" />
         </InputData> 
 
 <InputData Lumi="227277.192982" NEventsMax="-1" Type="MC" Version="TPTZBW500Inc" Cacheable="False"> 
-<In FileName="/nfs/dust/cms/user/hoeing/SFrame/Output/TPrimePreselection_CA15Filtered/TPrimePreselectionCycle.MC.TPTZBW500Inc.root" Lumi="0.0"/>
+<In FileName="/nfs/dust/cms/user/hoeing/SFrame/Output/TPrimePreselection_CA8Pruned/TPrimePreselectionCycle.MC.TPTZBW500Inc.root" Lumi="0.0"/>
         <InputTree Name="AnalysisTree" />
         </InputData> 
 
@@ -319,27 +306,27 @@
 
 
 <InputData Lumi="12268447.205" NEventsMax="-1" Type="MC" Version="TPTZTZ900Inc" Cacheable="False"> 
-<In FileName="/nfs/dust/cms/user/hoeing/SFrame/Output/TPrimePreselection_CA15Filtered/TPrimePreselectionCycle.MC.TPTZTZ900Inc.root" Lumi="0.0"/>
+<In FileName="/nfs/dust/cms/user/hoeing/SFrame/Output/TPrimePreselection_CA8Pruned/TPrimePreselectionCycle.MC.TPTZTZ900Inc.root" Lumi="0.0"/>
         <InputTree Name="AnalysisTree" />
         </InputData> 
 
 <InputData Lumi="4955769.23077" NEventsMax="-1" Type="MC" Version="TPTZTZ800Inc" Cacheable="False"> 
-<In FileName="/nfs/dust/cms/user/hoeing/SFrame/Output/TPrimePreselection_CA15Filtered/TPrimePreselectionCycle.MC.TPTZTZ800Inc.root" Lumi="0.0"/>
+<In FileName="/nfs/dust/cms/user/hoeing/SFrame/Output/TPrimePreselection_CA8Pruned/TPrimePreselectionCycle.MC.TPTZTZ800Inc.root" Lumi="0.0"/>
         <InputTree Name="AnalysisTree" />
         </InputData> 
 
 <InputData Lumi="1772636.20387" NEventsMax="-1" Type="MC" Version="TPTZTZ700Inc" Cacheable="False"> 
-<In FileName="/nfs/dust/cms/user/hoeing/SFrame/Output/TPrimePreselection_CA15Filtered/TPrimePreselectionCycle.MC.TPTZTZ700Inc.root" Lumi="0.0"/>
+<In FileName="/nfs/dust/cms/user/hoeing/SFrame/Output/TPrimePreselection_CA8Pruned/TPrimePreselectionCycle.MC.TPTZTZ700Inc.root" Lumi="0.0"/>
         <InputTree Name="AnalysisTree" />
         </InputData> 
 
 <InputData Lumi="574793.632075" NEventsMax="-1" Type="MC" Version="TPTZTZ600Inc" Cacheable="False"> 
-<In FileName="/nfs/dust/cms/user/hoeing/SFrame/Output/TPrimePreselection_CA15Filtered/TPrimePreselectionCycle.MC.TPTZTZ600Inc.root" Lumi="0.0"/>
+<In FileName="/nfs/dust/cms/user/hoeing/SFrame/Output/TPrimePreselection_CA8Pruned/TPrimePreselectionCycle.MC.TPTZTZ600Inc.root" Lumi="0.0"/>
         <InputTree Name="AnalysisTree" />
         </InputData> 
 
 <InputData Lumi="168708.77193" NEventsMax="-1" Type="MC" Version="TPTZTZ500Inc" Cacheable="False"> 
-<In FileName="/nfs/dust/cms/user/hoeing/SFrame/Output/TPrimePreselection_CA15Filtered/TPrimePreselectionCycle.MC.TPTZTZ500Inc.root" Lumi="0.0"/>
+<In FileName="/nfs/dust/cms/user/hoeing/SFrame/Output/TPrimePreselection_CA8Pruned/TPrimePreselectionCycle.MC.TPTZTZ500Inc.root" Lumi="0.0"/>
         <InputTree Name="AnalysisTree" />
         </InputData> 
 
@@ -391,6 +378,7 @@
 
 		     <Item Name="BTagEffi_Filename_MC" Value=/nfs/dust/cms/user/hoeing/SFrame/Output/cutflow_CA8Pruned_bTagHists/cutflowCycle"/>
 		     <Item Name="BTaggingMode" Value="mean" />
+		     <!--<Item Name="toppagptweight" Value="mean" />-->
 		    
 
 		   
