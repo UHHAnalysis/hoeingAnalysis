@@ -7,7 +7,8 @@
 <!ENTITY TTbarHadronicB SYSTEM "TTJets_HadronicMGDecays_8TeV-madgraph_ntuplewriter_ttbsm_53_plusprunedcfg_B.xml">
 <!ENTITY TTbarPowheg SYSTEM "TTbar_Powheg.xml">
 <!ENTITY QCD250to500 SYSTEM "QCD_HT-250To500_TuneZ2star_8TeV-madgraph-pythia6.xml">
-<!ENTITY QCD500to1000 SYSTEM "ntuplewriter_ttbsm_53_plusprunedcfg_Summer12_DR53X_QCD_HT-500To1000_TuneZ2star_8TeV-madgraph-pythia6_AODSIM_PU_S10_START53_V7A-v1.xml">
+<!ENTITY QCD500to1000 SYSTEM "ntuplewriter_ttbsm_53_plusprunedcfg_Summer12_DR53X_QCD_HT-500To1000_TuneZ2star_8TeV-madgraph-pythia6_AODSIM_PU_S10_START53_V7A-v1_A.xml">
+<!ENTITY QCD500to1000B SYSTEM "ntuplewriter_ttbsm_53_plusprunedcfg_Summer12_DR53X_QCD_HT-500To1000_TuneZ2star_8TeV-madgraph-pythia6_AODSIM_PU_S10_START53_V7A-v1_B.xml">
 <!ENTITY QCD1000A1 SYSTEM "ntuplewriter_ttbsm_53_plusprunedcfg_Summer12_DR53X_QCD_HT-1000ToInf_TuneZ2star_8TeV-madgraph-pythia6_AODSIM_PU_S10_START53_V7A-v1_A1.xml">
 <!ENTITY QCD1000B1 SYSTEM "ntuplewriter_ttbsm_53_plusprunedcfg_Summer12_DR53X_QCD_HT-1000ToInf_TuneZ2star_8TeV-madgraph-pythia6_AODSIM_PU_S10_START53_V7A-v1_B1.xml">
 <!ENTITY QCD1000C1 SYSTEM "ntuplewriter_ttbsm_53_plusprunedcfg_Summer12_DR53X_QCD_HT-1000ToInf_TuneZ2star_8TeV-madgraph-pythia6_AODSIM_PU_S10_START53_V7A-v1_C1.xml">
@@ -84,19 +85,20 @@
         <Library Name="libJetMETObjects"/>
         <Library Name="libhoeingAnalysis"/>
 
+        <!--Package Name="SFrameCore.par" /-->
         <Package Name="hoeingAnalysis.par" />
 
 
-<Cycle Name="cutflowCycle" RunMode="PROOF" ProofServer="pod://"  ProofWorkDir="" OutputDirectory="../../Output/cutflow_CA15_newOrder_invertedTopTag_HiggsMassCut/" PostFix="" TargetLumi="19708.0">
-<!--	<Cycle Name="cutflowCycle" RunMode="PROOF" ProofServer="lite://"  ProofWorkDir="" ProofNodes="8" OutputDirectory="../../Output/cutflow_CA15_newOrder/" PostFix="" TargetLumi="19708.0">-->
-   <!-- <Cycle Name="cutflowCycle" OutputDirectory="../../Output/cutflow_CA15_newOrder/" PostFix="" TargetLumi="19708.0">-->
+<Cycle Name="cutflowCycle" RunMode="PROOF" ProofServer="pod://"  ProofWorkDir="" OutputDirectory="../../Output/cutflow_CA15_full/" PostFix="" TargetLumi="19708.0">
+	<!--Cycle Name="cutflowCycle" RunMode="PROOF" ProofServer="lite://"  ProofWorkDir="/nfs/dust/cms/user/hoeing/.proof/"  OutputDirectory="../../Output/cutflow_CA15_newOrder_invertedTopTag_HiggsMassCut_withRegularTopMassWindow/" PostFix="" TargetLumi="19708.0"-->
+   <!--Cycle Name="cutflowCycle" OutputDirectory="../../Output/cutflow_CA15_likelihood/" PostFix="_test" TargetLumi="19708.0"-->
 	
 	
-<!--Cycle Name="cutflowCycle" OutputDirectory="../../Output/cutflow_CA15_newOrder/" PostFix="" TargetLumi="19708.0"-->
-
+<!--Cycle Name="cutflowCycle" OutputDirectory="../../Output/outputTreesFullSelection/" PostFix="" TargetLumi="19708.0"-->
 
 
 <!--
+
 <InputData Lumi="19708." NEventsMax="-1" Type="DATA" Version="DATAA" Cacheable="True">
 &DATAA;
 <InputTree Name="AnalysisTree" />
@@ -120,7 +122,6 @@
 <InputTree Name="AnalysisTree" />
       </InputData>
 -->
-
 <!--
 <InputData Lumi="97.7594202899" NEventsMax="-1" Type="MC" Version="QCD250to500" Cacheable="True"> 
 &QCD250to500;
@@ -131,10 +132,13 @@
 <!--
 <InputData Lumi="3601.48670781" NEventsMax="-1" Type="MC" Version="QCD500to1000" Cacheable="True"> 
 &QCD500to1000;
-
                         <InputTree Name="AnalysisTree" />
                 </InputData>
 
+<InputData Lumi="3601.48670781" NEventsMax="-1" Type="MC" Version="QCD500to1000B" Cacheable="True"> 
+&QCD500to1000B;
+                        <InputTree Name="AnalysisTree" />
+                </InputData>
 
 
 <InputData Lumi="66508.4166667" NEventsMax="-1" Type="MC" Version="QCD1000A1" Cacheable="True"> 
@@ -150,11 +154,13 @@
                 </InputData>
 
 
+
+
 <InputData Lumi="66508.4166667" NEventsMax="-1" Type="MC" Version="QCD1000C1" Cacheable="True"> 
 &QCD1000C1;
                         <InputTree Name="AnalysisTree" />
                 </InputData>
-
+-->
 
 <InputData Lumi="66508.4166667" NEventsMax="-1" Type="MC" Version="QCD1000AA1" Cacheable="True"> 
 &QCD1000AA1;
@@ -167,7 +173,7 @@
 <InputTree Name="AnalysisTree" />
                 </InputData>
 
-
+<!--
 
 <InputData Lumi="66508.4166667" NEventsMax="-1" Type="MC" Version="QCD1000CC1" Cacheable="True"> 
 &QCD1000CC1;
@@ -209,24 +215,30 @@
 &QCD1000CC2;
                         <InputTree Name="AnalysisTree" />
                 </InputData>
--->
 
-<!--
+
+
  <InputData Lumi="284141.069959" NEventsMax="-1" Type="MC" Version="TTbarHadronic" Cacheable="True">
 &TTbarHadronic;
-        <InputTree Name="AnalysisTree" /> 
+        <InputTree Name="AnalysisTree" />
+<OutputTree Name="AnalysisTree" /> 
       </InputData>
+
+
 
  <InputData Lumi="284141.069959" NEventsMax="-1" Type="MC" Version="TTbarHadronicB" Cacheable="True">
 &TTbarHadronicB;
         <InputTree Name="AnalysisTree" /> 
+<OutputTree Name="AnalysisTree" />
       </InputData>
 
  <InputData Lumi="231880.447953" NEventsMax="-1" Type="MC" Version="TTbarSemiLep" Cacheable="True">
 &TTbarSemiLep;
         <InputTree Name="AnalysisTree" /> 
+<OutputTree Name="AnalysisTree" />
       </InputData>
 -->
+
 <!--
 <InputData Lumi="88000.444898" NEventsMax="-1" Type="MC" Version="TTbarPowheg" Cacheable="True">
 <In FileName="/nfs/dust/cms/user/hoeing/SFrame/Output/TPrimePreselection_CA15Filtered/TPrimePreselectionCycle.MC.TTbarPowheg.root" Lumi="0.0"/>
@@ -234,6 +246,7 @@
       </InputData>
 -->
 
+<!--
  <InputData Lumi="24377083.3333" NEventsMax="-1" Type="MC" Version="TPTHTH1000" Cacheable="False"> 
 &TPTHTH1000;
         <InputTree Name="AnalysisTree" />
@@ -247,28 +260,31 @@
  <InputData Lumi="165983.050847" NEventsMax="-1" Type="MC" Version="TPTHTH500" Cacheable="True">
 &TPTHTH500;
         <InputTree Name="AnalysisTree" />
-        </InputData>  
-
+</InputData>
+-->
 <!--
+
 <InputData Lumi="11463888.8889" NEventsMax="-1" Type="MC" Version="TPTHTH900" Cacheable="True"> 
 &TPTHTH900;
         <InputTree Name="AnalysisTree" />
+<OutputTree Name="AnalysisTree" />
         </InputData> 
 
 <InputData Lumi="2829577.46479" NEventsMax="-1" Type="MC" Version="TPTHTH800" Cacheable="True"> 
 &TPTHTH800;
         <InputTree Name="AnalysisTree" />
+<OutputTree Name="AnalysisTree" />
         </InputData> 
 
 <InputData Lumi="550913.793103" NEventsMax="-1" Type="MC" Version="TPTHTH600" Cacheable="True"> 
 &TPTHTH600;
         <InputTree Name="AnalysisTree" />
+<OutputTree Name="AnalysisTree" />
         </InputData> 
+
 
 -->
 <!--
-
-
 <InputData Lumi="28547321.4286" NEventsMax="-1" Type="MC" Version="TPBWBW1000" Cacheable="True"> 
 &TPBWBW1000;
         <InputTree Name="AnalysisTree" />
@@ -461,7 +477,7 @@
 		      <!--Item Name="LumiFileName" Value="GoodRun_May12.root" /-->
 		      <!--Item Name="LumiTrigger" Value="HLT_PFJet320_v" /-->
 
-		      <Item Name="PU_Filename_MC" Value="/nfs/dust/cms/user/hoeing/PileUpHistos/PileUpHistoCycle" />
+		     <Item Name="PU_Filename_MC" Value="/nfs/dust/cms/user/hoeing/PileUpHistos/PileUpHistoCycle" />
 
 		      <!--<Item Name="PU_Filename_Data" Value="/nfs/dust/cms/user/hoeing/PileUpHistos/MyDataPileupHistogram.root" />-->
 		      <Item Name="PU_Filename_Data" Value="/nfs/dust/cms/user/peiffer/Analysis53X_v3/PileUpHistos/MyDataPileupHistogram.root" />
@@ -474,16 +490,27 @@
 		      <Item Name="JECJetCollection" Value="AK5PFchs" />
 		      <Item Name="JECTopJetCollection" Value="AK7PFchs" />
 		      <Item Name="JECTopTagJetCollection" Value="AK7PFchs" />
+		      <Item Name="JECSubJetCollection" Value="AK5PFchs" />
 
 		     <Item Name="BTagEffi_Filename_MC" Value="/nfs/dust/cms/user/hoeing/SFrame/Output/cutflow_CA15Filtered_bTagHists_newOrder/cutflowCycle"/>
 		     <Item Name="BTaggingMode" Value="mean" />
 		     <Item Name="toppagptweight" Value="mean" />
 		     <!--Item Name="TopTaggingSFMode" Value="mean" /-->
 		     
+		     <!--<Item Name="SystematicUncertainty" Value="SUBJEC" />
+                     <Item Name="SystematicVariation" Value="up" />
+                     <Item Name="ExtraSubjetJEC" Value="1.05" />-->
+
+
 		     <!--Item Name="SystematicUncertainty" Value="JER" />
 		     <Item Name="SystematicVariation" Value="up" /-->
 
-		   
+		     <!--Item Name="SystematicUncertainty" Value="JEC" />
+		     <Item Name="SystematicVariation" Value="down" />
+		     <Item Name="ExtraTopJEC" Value="1.02" /-->
+		     
+
+		    <Item Name="Thetafile" Value="/nfs/dust/cms/user/hoeing/SFrame/Output/histograms_forLikelihood.root" />
 
                 </UserConfig>
 	</Cycle>

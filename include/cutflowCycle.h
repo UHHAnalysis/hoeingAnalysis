@@ -49,6 +49,7 @@ private:
   //
   std::string m_BTagEffiFilenameMC;
    std::string m_BTaggingMode;
+  std::string m_thetainput;
 //   BTaggingRoutine* m_bsf;
   
   // Macro adding the functions for dictionary generation
